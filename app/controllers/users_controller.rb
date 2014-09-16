@@ -42,6 +42,23 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def bgg_api_request
+
+    username = params[:q]
+
+    url = "http://bgg-json.azurewebsites.net/collection/#{username}"
+
+    ret = HTTParty.get url
+
+    @gamelist = JSON.parse(ret.parsed_response)
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
+
+  end
+
   private
 
   def find_user
@@ -49,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:content)
+    params.require(:user).permit(:bgg_username)
   end
     
 

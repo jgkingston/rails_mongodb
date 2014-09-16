@@ -23,7 +23,11 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  has_and_belongs_to_many :games
+  field :bgg_username, type: String
+
+  ## Relationships
+  # has_and_belongs_to_many :games
+  has_many :comments
 
   ## Confirmable
   # field :confirmation_token,   type: String

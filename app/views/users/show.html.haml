@@ -1,0 +1,12 @@
+= @user.email
+
+%div.username{ajax_path: bgg_api_request_user_path(@user), bgg_username: "#{@user.bgg_username}"}
+
+- if @user == current_user
+  = link_to "Edit", edit_user_path(@user)
+
+%br
+Games List:
+%ul.gamelist
+  
+  

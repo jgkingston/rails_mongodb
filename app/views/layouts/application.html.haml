@@ -1,11 +1,14 @@
 !!!
-%html
+%html{:lang => "en", ng:{app: ""}}
   %head
     %title RailsMongo
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
+    %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    .container
+      - if notice || alert
+        %p.notice= notice
+        %p.alert= alert
+      = yield
