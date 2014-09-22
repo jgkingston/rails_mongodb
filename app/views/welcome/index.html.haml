@@ -1,20 +1,5 @@
 %h1 Hello World!
 
-/ %div{ ng: {controller: "IndexCtrl"}}
-/   %h2
-/     {{ title }}
-
-/   %div
-/     {{ addition }}
-/   .a.btn.btn-primary{ng: {click: 'generateCard()'}} Generate Card
-
-/ %ul{ng: {repeat: "day in calendar.days"}}
-/   %li
-/     {{ day.name }}
-/     %ul{ng: {repeat: 'event in day.events'}}
-/       %li
-/         {{ event.name }}
-/         {{ event.description }}
 %div{ ng: {controller: "IndexCtrl"}}
   .row
     %div.well.col-md-3.calculator
@@ -81,6 +66,8 @@
           .a.btn.btn-default
             = "."
     %div.well.col-md-3.col-md-offset-3        
+      
+
   .row         
     %div.well.col-md-3
       %p Pending Operation: {{ pendingOperation }} 

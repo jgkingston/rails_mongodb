@@ -1,18 +1,4 @@
 
-// $(document).ready(function() {
-//   console.log("ready")
-//   var bbgUserName = $('.username').attr("bgg_username")
-//   $.ajax({
-//     url: "http://bgg-json.azurewebsites.net/collection/" + bbgUserName,
-//     type: 'GET',
-//     dataType: 'JSON',
-//     success: function(data) {
-//       $(".dealership_show_frame").html("<img src='" + data.avatar_url + "'>")
-//       // console.log(data);
-//     }
-//   })
-// })
-
 // jQuery AJAX function to call BoardGameGeek API
 $(document).ready(function() {
   console.log("ready")
