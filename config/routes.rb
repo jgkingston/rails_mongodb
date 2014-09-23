@@ -2,8 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     member do
-      get 'bgg_api_request'
+      # get 'bgg_api_request'
+      get 'git_user_repos_request'
     end
+    resources :gardens do
+      member do
+        get 'git_user_repo_events'
+        get 'retrieve_git_commit'
+      end
+      resources :growth_rings
+    end
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -12,9 +21,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  resources :games do
-    resources :comments
-  end
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

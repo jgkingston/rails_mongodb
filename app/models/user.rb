@@ -24,10 +24,11 @@ class User
   field :last_sign_in_ip,    type: String
 
   field :bgg_username, type: String
+  field :github_username, type: String
 
   ## Relationships
   # has_and_belongs_to_many :games
-  has_many :comments
+  embeds_many :gardens
 
   ## Confirmable
   # field :confirmation_token,   type: String

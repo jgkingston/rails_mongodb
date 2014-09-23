@@ -1,0 +1,4 @@
+%h2= @garden.name
+
+%h3.repo{"repo-name" => @garden.name } Repo Events
+%div.repo-events{ajax_path: git_user_repo_events_user_garden_path(@user, @garden)}

@@ -1,0 +1,2 @@
+$('.repo-events').html("")
+$(".repo-events").append("<%= escape_javascript(render('gardens/repo_events', repo_events: @repo_events)) %>")

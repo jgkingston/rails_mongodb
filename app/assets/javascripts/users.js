@@ -1,14 +1,26 @@
 
 // jQuery AJAX function to call BoardGameGeek API
+// $(document).ready(function() {
+//   console.log("ready")
+//   $.ajax({
+//     url: $('.username').attr('ajax_path') ,
+//     type: 'GET',
+//     dataType: 'script',
+//     data: {q: $('.username').attr('bgg_username')}
+//   })
+// });
+
 $(document).ready(function() {
   console.log("ready")
   $.ajax({
-    url: $('.username').attr('ajax_path') ,
+    url: $('.repolist').attr('ajax_path') ,
     type: 'GET',
-    dataType: 'script',
-    data: {q: $('.username').attr('bgg_username')}
-  })
+    dataType: 'script'
+    })
 });
+
+
+
 
 $(document).on('click', $('.find-toy-btn'), function(){
 

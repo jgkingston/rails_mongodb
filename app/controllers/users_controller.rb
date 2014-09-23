@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -59,6 +58,20 @@ class UsersController < ApplicationController
 
   end
 
+  def git_user_repos_request
+
+    url = "https://api.github.com/users/jgkingston/repos"
+
+    ret = HTTParty.get url, headers: {"User-Agent" => 'jgkingston'}
+
+    @repos = ret.parsed_response
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+
   private
 
   def find_user
@@ -66,7 +79,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:bgg_username)
+    params.require(:user).permit(:github_username)
   end
     
 

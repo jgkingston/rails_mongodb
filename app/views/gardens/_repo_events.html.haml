@@ -1,0 +1,8 @@
+%ul
+  - @repo_events.each do |event|
+    %li
+      = event["id"]
+    %ul
+      - event["payload"]["commits"].each do |commit|
+        %li
+          = link_to commit["sha"], new_user_garden_growth_ring_path(@user, @garden, q: commit["sha"])
