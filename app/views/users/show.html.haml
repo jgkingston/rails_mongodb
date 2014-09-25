@@ -15,4 +15,8 @@
       = link_to garden.name, user_garden_path(@user, garden)
   
 %h2 Repos
-%div.repolist{ajax_path: git_user_repos_request_user_path}
+%div.repolist{ajax_path: git_api_repos_user_path}
+  / %ul
+  /   - @repos.each do |repo|
+  /     %li
+  /       = link_to repo["name"], user_gardens_path(current_user, garden: {name: "#{repo['name']}"}), method: :post

@@ -1,0 +1,10 @@
+- @garden.growth_rings.each do |growth_ring|
+  %li
+    = growth_ring["total"]
+    = growth_ring["additions"]
+    = growth_ring["deletions"]
+    = growth_ring["message"]
+    |
+    = link_to "Delete", user_garden_growth_ring_path(@user, @garden, growth_ring), method: :delete
+    |
+    = link_to "Get Details", user_garden_growth_ring_path(@user, @garden, growth_ring), method: :patch 

@@ -1,13 +1,15 @@
+require './lib/git_api_requests'
+
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy, :git_user_repos_request]
 
   def index
     @users = User.all
   end
 
   def show
-
+  
   end
 
   def new
@@ -41,34 +43,16 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def bgg_api_request
+  def git_api_repos
 
-    username = params[:q]
-
-    url = "http://bgg-json.azurewebsites.net/collection/#{username}"
-
-    ret = HTTParty.get url
-
-    @gamelist = JSON.parse(ret.parsed_response)
+    request = GitHubApiRequest.new
+    request.username = @user.github_username
+    request.get_repos
+    @repos = request.repositories
 
     respond_to do |format|
       format.js
-      format.html
-    end
-
-  end
-
-  def git_user_repos_request
-
-    url = "https://api.github.com/users/jgkingston/repos"
-
-    ret = HTTParty.get url, headers: {"User-Agent" => 'jgkingston'}
-
-    @repos = ret.parsed_response
-
-    respond_to do |format|
-      format.js
-      format.html
+      # format.html
     end
   end
 

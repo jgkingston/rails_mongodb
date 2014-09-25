@@ -3,4 +3,5 @@
 %br  
 = @git_commit["commit"]["message"]
 %br
-= @git_commit
+= link_to "Save Commit to Database", user_garden_growth_rings_path(@user, @garden, growth_ring: {total: @git_commit["stats"]["total"], additions: @git_commit["stats"]["additions"], deletions: @git_commit["stats"]["deletions"], message: @git_commit["commit"]["message"]}), method: :post
+

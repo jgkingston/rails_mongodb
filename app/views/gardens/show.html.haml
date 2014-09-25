@@ -1,4 +1,23 @@
 %h2= @garden.name
 
-%h3.repo{"repo-name" => @garden.name } Repo Events
-%div.repo-events{ajax_path: git_user_repo_events_user_garden_path(@user, @garden)}
+%ul.growth-rings
+  = render 'commits'
+
+= @garden.sha_keys
+
+%h3 Git Commits
+
+= link_to "Get Commits", "javascript:void(0)", class: "commits-log", ajax_path: git_api_commits_user_garden_path(@user, @garden)
+%br
+= link_to "Plant Tree", user_garden_growth_rings_path(@user, @garden), method: :post
+
+
+%div#chart 
+  %svg
+
+
+
+%button{class: "regenerate"}Regenerate
+
+%script{:src => "/assets/d3.v3.min.js?body=1"}
+%script{:src => "/assets/main.js?body=1"}

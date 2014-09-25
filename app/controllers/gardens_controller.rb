@@ -1,7 +1,9 @@
+require './lib/git_api_requests'
+
 class GardensController < ApplicationController
 
   before_action :load_user
-  before_action :find_garden, only: [:show, :edit, :update, :destroy, :git_user_repo_events, :retrieve_git_commit] 
+  before_action :find_garden, only: [:show, :edit, :update, :destroy, :git_api_commits] 
 
   def index
     @gardens = Garden.all
@@ -43,35 +45,26 @@ class GardensController < ApplicationController
     redirect_to gardens_path
   end
 
-  def git_user_repo_events
+  def git_api_commits
 
-    repo_name = params[:q]
+    request = GitHubApiRequest.new
 
-    url = "https://api.github.com/repos/" + "#{@user.github_username}" + "/" + "#{@garden.name}" + "/events"
+    request.username = @user.github_username
+    request.repository = @garden.name
 
-    ret = HTTParty.get url, headers: {"User-Agent" => "#{@user.github_username}"}
+    request.get_commits
 
-    @repo_events = ret.parsed_response.select{ |event| event["type"] == "PushEvent"}
+    sha_keys = request.commits.map{|commit| commit["sha"]}
 
-    respond_to do |format|
-      format.js
-      format.html
-    end
-  end
+    @garden.update_attributes(sha_keys: sha_keys)
 
-  def retrieve_git_commit
-
-    sha = params[:q]
-
-    url = "https://api.github.com/repos/" + "#{@user.github_username}" + "/" + "#{r@garden.name}" + "/commits"
-
-    ret = HTTParty.get url, headers: {"User-Agent" => "#{@user.github_username}"}
-
-    @repo_events = ret.parsed_response
+    # sha_keys.each do |sha|
+    #   @garden.growth_rings.create(sha: sha)
+    # end
 
     respond_to do |format|
       format.js
-      format.html
+      # format.html
     end
   end
 
@@ -82,12 +75,11 @@ class GardensController < ApplicationController
   end
 
   def find_garden
-    @user = load_user
     @garden = @user.gardens.find params[:id]
   end
 
   def garden_params
-    params.require(:garden).permit(:name)
+    params.require(:garden).permit(:name, :sha_keys)
   end
 
 end

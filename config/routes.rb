@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
+
   devise_for :users
+
   resources :users do
     member do
       # get 'bgg_api_request'
-      get 'git_user_repos_request'
+      get 'git_api_repos'
     end
     resources :gardens do
       member do
-        get 'git_user_repo_events'
-        get 'retrieve_git_commit'
+        get 'git_api_commits'
       end
-      resources :growth_rings
+      resources :growth_rings do
+        member do
+          get 'git_api_commit'
+        end
+      end
     end
-
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
