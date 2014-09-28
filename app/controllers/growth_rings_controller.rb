@@ -30,12 +30,16 @@ class GrowthRingsController < ApplicationController
     request.username = @user.github_username
     request.repository = @garden.name
 
-    request.get_detailed_commits @garden.sha_keys
+    request.get_detailed_commits @garden.sha_key_dates, @garden.last_updated
 
     @commits = request.detailed_commits
     
     @commits.each do |commit|
       commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
+    end
+
+    if @commits.length > 0
+      @garden.update_attributes(last_updated: @commits[0]["commit"]["committer"]["date"])
     end
 
     redirect_to user_garden_path(@user, @garden)

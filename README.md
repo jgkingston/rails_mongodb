@@ -10,12 +10,12 @@ Then to load mongodb now:
 
 Include the following in user.rb if using devise:
 
-  class << self
+    'class << self
       def serialize_from_session(key, salt)
-      record = to_adapter.get(key[0]["$oid"])
-      record if record && record.authenticatable_salt == salt
+        record = to_adapter.get(key[0]["$oid"])
+        record if record && record.authenticatable_salt == salt
       end
-  end
+    end'
 
 Thanks djsmentya
 

@@ -4,6 +4,11 @@
   = render 'commits'
 
 = @garden.sha_keys
+= @garden.sha_key_dates
+%br
+= @garden.last_updated
+%br
+= @garden.comment_quality
 
 %h3 Git Commits
 
@@ -15,6 +20,7 @@
 %div#chart 
   %svg
 
+%div.attribute-holder{age: @garden.age, length: @garden.get_length, gnarling: @garden.comment_quality}
 
 
 %button{class: "regenerate"}Regenerate

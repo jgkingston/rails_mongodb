@@ -34,6 +34,7 @@ function branch(b) {
     a: b.a - angleDelta + randomAngleDelta,
     l: b.l * lengthDelta,
     d: b.d + 1,
+    g: b.g,
     parent: b.i
   };
   branch(newB);
@@ -45,8 +46,9 @@ function branch(b) {
     x: end.x, 
     y: end.y, 
     a: b.a + angleDelta + randomAngleDelta, 
-    l: b.l * lengthDelta, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
+    l: b.l * lengthDelta * b.g, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
     d: b.d + 1,
+    g: b.g,
     parent: b.i
   };
   branch(newB);
@@ -54,8 +56,12 @@ function branch(b) {
 
 function regenerate(initialise) {
   console.log("Hello?")
+  var depth = $(".attribute-holder").attr("age");
+  var length = $(".attribute-holder").attr("length");
+  var gnarl = $(".attribute-holder").attr("gnarling");
+  console.log(gnarl)
   branches = [];
-  var seed = {i: 0, x: 420, y: 600, a: 0, l: 130, d:0}; // a = angle, l = length, d = depth
+  var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl}; // a = angle, l = length, d = depths, g = gnarl
   branch(seed);
   initialise ? create() : update();
 }

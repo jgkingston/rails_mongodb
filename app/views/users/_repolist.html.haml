@@ -1,4 +1,4 @@
 %ul
   - @repos.each do |repo|
     %li
-      = link_to repo["name"], user_gardens_path(current_user, garden: {name: "#{repo['name']}"}), method: :post
+      = link_to repo["name"], user_gardens_path(current_user, garden: {name: repo['name'] }), method: :post

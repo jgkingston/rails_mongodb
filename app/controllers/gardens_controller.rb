@@ -54,13 +54,14 @@ class GardensController < ApplicationController
 
     request.get_commits
 
+    puts request.commits
+
     sha_keys = request.commits.map{|commit| commit["sha"]}
+    sha_key_dates = request.commits.flat_map{|commit| [commit["sha"], commit["commit"]["committer"]["date"]]}
 
     @garden.update_attributes(sha_keys: sha_keys)
+    @garden.update_attributes(sha_key_dates: Hash[*sha_key_dates])
 
-    # sha_keys.each do |sha|
-    #   @garden.growth_rings.create(sha: sha)
-    # end
 
     respond_to do |format|
       format.js

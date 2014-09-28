@@ -1,83 +1,16 @@
-%h1 Hello World!
+- if user_signed_in?
 
-= link_to "Users", users_path
+  =render 'users/show', user: current_user
 
-%div.calculator{ ng: {controller: "IndexCtrl"}}
-  .row
-    %div.well.col-md-3.calculator
-      .row
-        .well.display.text-right
-          {{ displayValue }}
-      .row
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "clearAll()"}}
-            C
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: 'buildNumber(-1)'}}
-            ±
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "setOperator('divide')"}}
-            ÷
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "setOperator('multiply')"}}
-            x
-      .row
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "val = 7", click: 'buildNumber(7)'}}
-            7
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "val = 8", click: 'buildNumber(8)'}}
-            8
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "val = 9", click: 'buildNumber(9)'}}
-            9
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "setOperator('subtract')"}}
-            −
-      .row
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "val = 4", click: 'buildNumber(4)'}}
-            4
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "val = 5", click: 'buildNumber(5)'}}
-            5
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "val = 6", click: 'buildNumber(6)'}}
-            6
-        .col-md-3.button
-          .a.btn.btn-default{ng: {click: "setOperator('add')"}}
-            +
-      .row
-        .col-md-3.col-md-push-9.button
-          .a.btn.btn-default.tall{ng: {click: 'doMath()'}}
-            = "="
-        .col-md-3.col-md-pull-3.button
-          .a.btn.btn-default{ng: {click: "val = 1", click: 'buildNumber(1)'}}
-            1
-        .col-md-3.col-md-pull-3.button
-          .a.btn.btn-default{ng: {click: "val = 2", click: 'buildNumber(2)'}}
-            2
-        .col-md-3.col-md-pull-3.button
-          .a.btn.btn-default{ng: {click: "val = 3", click: 'buildNumber(3)'}}
-            3
+- else
+  #large.jumbotron.input
+    %h1 Require Tree
+    %p What if I told you that you were looking at a GitHub repository? Click below to see yours.
+    %p= link_to "Sign Up »", new_user_registration_path, class: "btn btn-primary btn-lg"
+    %div#chart 
+      %svg
 
-        .col-md-6.col-md-pull-3.button
-          .a.btn.btn-default{ng: {click: "val = 3", click: 'buildNumber(0)'}}
-            0
-        .col-md-3.col-md-pull-3.button
-          .a.btn.btn-default
-            = "."
-    %div.well.col-md-3.col-md-offset-3        
-      
+      %div.attribute-holder{age: 10, length: 130, gnarling: 1}
 
-  .row         
-    %div.well.col-md-3
-      %p Pending Operation: {{ pendingOperation }} 
-      %p Last Operation: {{lastOperation}}
-      %p Display Value: {{displayValue}}
-      %p Running Total: {{runningTotal}}
-      %p Pending Value: {{pendingValue}}
-      %p New Number: {{newNumber}}
- 
-  
+      %button{class: "regenerate"}Regenerate
 

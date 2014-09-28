@@ -25,10 +25,12 @@ class User
 
   field :bgg_username, type: String
   field :github_username, type: String
+  field :user_repos, type: Array
 
   ## Relationships
   # has_and_belongs_to_many :games
   embeds_many :gardens
+
 
   ## Confirmable
   # field :confirmation_token,   type: String

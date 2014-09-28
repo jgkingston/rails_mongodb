@@ -2,14 +2,14 @@ require './lib/git_api_requests'
 
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:show, :edit, :update, :destroy, :git_user_repos_request]
+  before_action :find_user, only: [:show, :edit, :update, :destroy, :git_api_repos ]
 
   def index
     @users = User.all
   end
 
   def show
-  
+    @garden = Garden.new
   end
 
   def new
@@ -50,9 +50,12 @@ class UsersController < ApplicationController
     request.get_repos
     @repos = request.repositories
 
+    repository_names = request.repositories.map{|repo| repo["name"]}
+
+    @user.update_attributes(user_repos: repository_names)
+
     respond_to do |format|
       format.js
-      # format.html
     end
   end
 

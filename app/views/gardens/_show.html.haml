@@ -1,0 +1,10 @@
+%div#chart 
+  %svg
+
+%div.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality}
+
+
+%button{class: "regenerate"}Regenerate
+
+%script{:src => "/assets/d3.v3.min.js?body=1"}
+%script{:src => "/assets/main.js?body=1"}

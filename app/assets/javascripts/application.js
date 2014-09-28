@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require angular
+//= require d3.v3.min
 //= require underscore
 //= require_tree .
