@@ -1,10 +1,9 @@
-%div#chart 
+%div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.name, initialise: "true", class: garden.name}
   %svg
+    %svg{viewBox: "0 0 840 600", preserveAspectRatio: "none"}
+      %g{class: "#{garden.name}"}
 
-%div.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality}
 
+%button{class: "regenerate", tree: garden.name}Regenerate
 
-%button{class: "regenerate"}Regenerate
-
-%script{:src => "/assets/d3.v3.min.js?body=1"}
 %script{:src => "/assets/main.js?body=1"}

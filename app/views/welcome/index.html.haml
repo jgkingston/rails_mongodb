@@ -7,10 +7,17 @@
     %h1 Require Tree
     %p What if I told you that you were looking at a GitHub repository? Click below to see yours.
     %p= link_to "Sign Up »", new_user_registration_path, class: "btn btn-primary btn-lg"
-    %div#chart 
-      %svg
+    .row
+      .col-lg-6.col-lg-offset-3
+        %div.chart.attribute-holder{age: 10, length: 130, gnarling: 1, id: 'example'}
+      
+          %svg{viewBox: "0 0 840 600", preserveAspectRatio: "none"}
+            %g{class: 'example'}
 
-      %div.attribute-holder{age: 10, length: 130, gnarling: 1}
+          %button{class: "regenerate"}Regenerate
 
-      %button{class: "regenerate"}Regenerate
+
+  %script{:src => "/assets/main.js?body=1"}
+
+    
 

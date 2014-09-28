@@ -1,6 +1,6 @@
 %h2= @garden.name
 
-%ul.growth-rings
+%ol.growth-rings
   = render 'commits'
 
 = @garden.sha_keys
@@ -16,14 +16,14 @@
 %br
 = link_to "Plant Tree", user_garden_growth_rings_path(@user, @garden), method: :post
 
+.row
+  .col-lg-6.col-lg-offset-3
+    %div.chart.attribute-holder{age: @garden.age, length: @garden.get_length, gnarling: @garden.comment_quality, id: @garden.name, initialise: "true", class: @garden.name}
 
-%div#chart 
-  %svg
-
-%div.attribute-holder{age: @garden.age, length: @garden.get_length, gnarling: @garden.comment_quality}
+      %svg{viewBox: "0 0 840 600", preserveAspectRatio: "none"}
+        %g{ class: "#{@garden.name}"}
 
 
-%button{class: "regenerate"}Regenerate
+%button{class: "regenerate", tree: @garden.name}Regenerate
 
-%script{:src => "/assets/d3.v3.min.js?body=1"}
 %script{:src => "/assets/main.js?body=1"}

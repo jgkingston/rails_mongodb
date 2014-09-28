@@ -6,6 +6,7 @@ class Garden
   
   field :owner, type: String
   field :name, type: String
+  field :language, type: String
   field :sha_keys, type: Array
   field :sha_key_dates, type: Hash
   field :last_updated, type: DateTime, default: "2008-04-01T00:00:00Z"

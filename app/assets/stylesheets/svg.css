@@ -1,14 +1,40 @@
 /* SVG styling */
 svg {
-  width: 840px;
-  height: 600px;
   font-family: helvetica, sans-serif;
 }
 
-path {
+/*path {
   stroke: #777;
-} 
+} */
 
 line {
   stroke: #777;
+}
+
+svg:hover line {
+  stroke: green;
+}
+
+/*svg:hover path {
+  stroke: green;
+}*/
+
+.chart {
+  /*background-color: #383838;*/
+  /*width: 100%;*/
+}
+
+.chart svg {
+  overflow: visible;
+  width: 100%;
+}
+
+line {
+  fill: none;
+  /*stroke-width: 3px;*/
+  vector-effect: non-scaling-stroke;
+}
+
+.area {
+  vector-effect: non-scaling-stroke;
 }

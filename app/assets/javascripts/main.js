@@ -3,7 +3,7 @@
 
 // Tree configuration
 var branches = [];
-var seed = {i: 0, x: 420, y: 600, a: 0, l: 130, d:0}; // a = angle, l = length, d = depth
+// var seed = {i: 0, x: 420, y: 600, a: 0, l: 130, d:0}; // a = angle, l = length, d = depth
 // a = angle sets the angle of the "trunk"
 // l = length is a better way of making a shorter tree **log10(loc)?**
 // d = depth higher values seems to make the whole tree "thinner"
@@ -54,16 +54,26 @@ function branch(b) {
   branch(newB);
 }
 
-function regenerate(initialise) {
-  console.log("Hello?")
-  var depth = $(".attribute-holder").attr("age");
-  var length = $(".attribute-holder").attr("length");
-  var gnarl = $(".attribute-holder").attr("gnarling");
-  console.log(gnarl)
+function regenerate(d) {
+  console.log(d)
+  var depth = $("div." + d).attr("age");
+  var length = $("div." + d).attr("length");
+  var gnarl = $("div." + d).attr("gnarling");
+  var name = $("div." + d).attr("id");
+  var initialise = $("div." + d).attr("initialise");;
+  console.log(initialise)
   branches = [];
   var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl}; // a = angle, l = length, d = depths, g = gnarl
   branch(seed);
-  initialise ? create() : update();
+  if (initialise == "true"){
+    create(name)
+  }
+  else{
+    update(name)
+  }
+  // initialise ? create(name) : update(name);
+  $("div." + d).attr("initialise", "false");
+  // initialise = false
 }
 
 function endPt(b) {
@@ -88,10 +98,10 @@ function highlightParents(d) {
   } 
 }
 
-function create() {
+function create(name) {
   console.log("Creating")
-  d3.select('svg')
-    .selectAll('line')
+  d3.select('g.' + name)
+    .selectAll('g.' + name + '>line')
     .data(branches)
     .enter()
     .append('line')
@@ -101,13 +111,13 @@ function create() {
     .attr('y2', y2)
     .style('stroke-width', function(d) {return parseInt(maxDepth + 1 - d.d) + 'px';})
     .attr('id', function(d) {return 'id-'+d.i;})
-    .on('mouseover', highlightParents)
-    .on('mouseout', highlightParents);
+    // .on('mouseover', highlightParents)
+    // .on('mouseout', highlightParents);
 }
 
-function update() {
-  d3.select('svg')
-    .selectAll('line')
+function update(name) {
+  d3.select('g.' + name)
+    .selectAll('g.' + name + '>line')
     .data(branches)
     .transition()
     .attr('x1', x1)
@@ -116,7 +126,19 @@ function update() {
     .attr('y2', y2);
 }
 
-d3.selectAll('.regenerate')
-  .on('click', regenerate);
+var stats = new Array();
+// var datum = $('.attribute-holder').attr("id")
+// stats.push(datum);
 
-regenerate(true);
+$(".attribute-holder").each(function (i) {
+        stats[i]=$(this).attr("id");
+});
+
+console.log(stats)
+
+var trees = d3.selectAll('.regenerate').data(stats);
+
+
+trees.on('click', regenerate );
+
+// regenerate(true);
