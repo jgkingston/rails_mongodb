@@ -27,17 +27,43 @@ function branch(b) {
   // Left branch
   randomAngleDelta = angleRandomness * Math.random() - angleRandomness * 0.5; // Math.random() returns a value from 0 to 1.
   // Perhaps we can substitute values from the commit to make trees distinct
+
+  var sideBranchDelta = 1;
+
+  if (b.t == "pine") {
+    sideBranchDelta = 0.5
+  };
+
   newB = {
     i: branches.length,
     x: end.x,
     y: end.y,
     a: b.a - angleDelta + randomAngleDelta,
-    l: b.l * lengthDelta,
+    l: b.l * lengthDelta * sideBranchDelta,
     d: b.d + 1,
     g: b.g,
+    t: b.t,
     parent: b.i
   };
   branch(newB);
+
+  if (b.t == "pine") {
+    // Center
+    randomAngleDelta = angleRandomness * Math.random() - angleRandomness * 0.5; // Math.random() returns a value from 0 to 1.
+    // Perhaps we can substitute values from the commit to make trees distinct
+    newB = {
+      i: branches.length,
+      x: end.x,
+      y: end.y,
+      a: b.a,
+      l: b.l * lengthDelta,
+      d: b.d + 1,
+      g: b.g,
+      t: b.t,
+      parent: b.i
+    };
+    branch(newB);
+  }
 
   // Right branch
   randomAngleDelta = angleRandomness * Math.random() - angleRandomness * 0.5;
@@ -46,9 +72,10 @@ function branch(b) {
     x: end.x, 
     y: end.y, 
     a: b.a + angleDelta + randomAngleDelta, 
-    l: b.l * lengthDelta * b.g, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
+    l: b.l * lengthDelta * b.g * sideBranchDelta, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
     d: b.d + 1,
     g: b.g,
+    t: b.t,
     parent: b.i
   };
   branch(newB);
@@ -60,10 +87,11 @@ function regenerate(d) {
   var length = $("div." + d).attr("length");
   var gnarl = $("div." + d).attr("gnarling");
   var name = $("div." + d).attr("id");
-  var initialise = $("div." + d).attr("initialise");;
+  var initialise = $("div." + d).attr("initialise");
+  // var type =  $("div." + d).attr("type");
   console.log(initialise)
   branches = [];
-  var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl}; // a = angle, l = length, d = depths, g = gnarl
+  var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl, t: "pine"}; // a = angle, l = length, d = depths, g = gnarl
   branch(seed);
   if (initialise == "true"){
     create(name)
@@ -134,7 +162,7 @@ $(".attribute-holder").each(function (i) {
         stats[i]=$(this).attr("id");
 });
 
-console.log(stats)
+// console.log(stats)
 
 var trees = d3.selectAll('.regenerate').data(stats);
 
