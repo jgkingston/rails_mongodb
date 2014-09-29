@@ -91,7 +91,7 @@ function regenerate(d) {
   // var type =  $("div." + d).attr("type");
   console.log(initialise)
   branches = [];
-  var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl, t: "pine"}; // a = angle, l = length, d = depths, g = gnarl
+  var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl, t: "oak"}; // a = angle, l = length, d = depths, g = gnarl
   branch(seed);
   if (initialise == "true"){
     create(name)

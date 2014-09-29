@@ -54,4 +54,8 @@ class Garden
     gnarling
   end
 
+  def color
+    
+  end
+
 end

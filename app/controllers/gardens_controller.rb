@@ -80,7 +80,7 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-    params.require(:garden).permit(:name, :sha_keys)
+    params.require(:garden).permit(:name, :sha_keys, :sha_key_dates, :language)
   end
 
 end
