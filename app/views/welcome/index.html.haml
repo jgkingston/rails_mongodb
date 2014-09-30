@@ -1,6 +1,14 @@
 - if user_signed_in?
+  
+  = label_tag 'owner'
+  = text_field_tag 'owner'
+  = label_tag 'repo'
+  = text_field_tag 'repo'
+  = link_to "Require Tree", "javascript:void(0)", class: "btn btn-default require-tree submit", ajax_path: require_tree_user_path(current_user)
 
   =render 'users/show', user: current_user
+
+
 
 - else
   #large.jumbotron.input

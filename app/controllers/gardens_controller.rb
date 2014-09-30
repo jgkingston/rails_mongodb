@@ -34,7 +34,7 @@ class GardensController < ApplicationController
 
   def update
     if @garden.update_attributes garden_params
-      redirect_to gardens_path
+      redirect_to user_garden_path(@user, @garden)
     else
       render :edit
     end
@@ -47,20 +47,20 @@ class GardensController < ApplicationController
 
   def git_api_commits
 
-    request = GitHubApiRequest.new
+    github = Github.new oauth_token: @user.token,
+                        auto_pagination: true
 
-    request.username = @user.github_username
-    request.repository = @garden.name
+    commits = github.repos.commits.all @garden.owner, @garden.name
 
-    request.get_commits
+    sha_key_dates = commits.flat_map{|commit| [commit["sha"], commit["commit"]["committer"]["date"]]}
 
-    puts request.commits
+    github = Github.new oauth_token: @user.token,
+                        auto_pagination: true
 
-    sha_keys = request.commits.map{|commit| commit["sha"]}
-    sha_key_dates = request.commits.flat_map{|commit| [commit["sha"], commit["commit"]["committer"]["date"]]}
+    contributors = github.repos.contributors @garden.owner, @garden.name
 
-    @garden.update_attributes(sha_keys: sha_keys)
-    @garden.update_attributes(sha_key_dates: Hash[*sha_key_dates])
+    # @garden.update_attributes(sha_keys: sha_keys)
+    @garden.update_attributes(sha_key_dates: Hash[*sha_key_dates], contributors: contributors.length )
 
 
     respond_to do |format|
@@ -80,7 +80,7 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-    params.require(:garden).permit(:name, :sha_keys, :sha_key_dates, :language)
+    params.require(:garden).permit(:name, :sha_key_dates, :language)
   end
 
 end

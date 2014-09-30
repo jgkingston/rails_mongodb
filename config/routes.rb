@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      # get 'bgg_api_request'
       get 'git_api_repos'
+      get 'require_tree'
     end
     resources :gardens do
       member do

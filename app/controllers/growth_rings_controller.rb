@@ -27,7 +27,7 @@ class GrowthRingsController < ApplicationController
   def create
 
     request = GitHubApiRequest.new
-    request.username = @user.github_username
+    request.username = @garden.owner
     request.repository = @garden.name
 
     request.get_detailed_commits @garden.sha_key_dates, @garden.last_updated
@@ -51,20 +51,8 @@ class GrowthRingsController < ApplicationController
   end
 
   def update
-    # request = GitHubApiRequest.new
-    # request.username = @user.github_username
-    # request.repository = @garden.name
-    # request.get_commit @growth_ring.sha
-
-    # stats = request.extract_commit_stats
-    # p stats
-    # @growth_ring.total = stats['total']
-    # @growth_ring.additions = stats['additions']
-    # @growth_ring.deletions = stats['deletions']
-    # @growth_ring.message = stats['message']
-    # @user.save
    
-    @growth_ring.update_attributes!(total: 42)
+    @growth_ring.update_attributes growth_ring_params
 
     redirect_to user_garden_path(@user, @garden)
   end

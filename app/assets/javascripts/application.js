@@ -16,3 +16,7 @@
 //= require d3.v3.min
 //= require underscore
 //= require_tree .
+
+$(function() {
+$('[data-toggle="tooltip"]').tooltip();  
+})

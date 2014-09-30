@@ -1,4 +1,17 @@
+/ .row
+/   - user.user_repos.each do |repo|
+/     .col-lg-1.acorn{ "data-toggle" => "tooltip", "data-placement" => "top", title: "", "data-original-title" => repo["name"]}
+/       = link_to user_gardens_path(current_user, garden: {name: repo['name'], language: repo['language'] }), method: :post, class: repo['language'] do
+/         = image_tag 'Acorn2.svg', class: "seed-image"
+/         = image_tag 'Acorn1.svg', class: "seed-image"
+
+= user.user_repos
+
 %ul
-  - @repos.each do |repo|
+  - user.user_repos.each do |repo|
     %li
-      = link_to "#{repo["name"]}, #{repo["language"]}", user_gardens_path(current_user, garden: {name: repo['name'], language: repo['language'] }), method: :post, class: repo['language']
+      = link_to "#{repo["owner"]}/#{repo["name"]}, #{repo["language"]}", user_gardens_path(current_user, garden: {owner: repo, name: repo['name'], language: repo['language'] }), method: :post, class: repo['language']
+      |
+      - names = user.gardens.map{|garden| garden.name }
+      - if names.include?(repo["name"])
+        Tracked 

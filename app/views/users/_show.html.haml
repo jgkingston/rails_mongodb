@@ -1,18 +1,12 @@
-= user.email
-
 .row
-  .col-lg-3
-    %h2 Gardens
-    %ul
-      - user.gardens.each do |garden|
-        %li
-          = link_to garden.name, user_garden_path(user, garden)
-      
-    %h2 Repos
-    %div.repolist{ajax_path: git_api_repos_user_path(user)}
-  .col-lg-9
-    .row
-      - user.gardens.each do |garden|
-        .col-lg-4
-          = render 'gardens/show', garden: garden
+  - user.gardens.each do |garden|
+    .col-lg-3
+      = render 'gardens/show', garden: garden, user: user
+
+= link_to "Gather Seeds", "javascript:void(0)", class: "gather-seeds btn btn-default"
+
+%div.repolist{ajax_path: git_api_repos_user_path(user)}
+  = render 'users/repolist', user: user
+
+
  

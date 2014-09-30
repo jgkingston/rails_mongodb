@@ -7,7 +7,9 @@ class Garden
   field :owner, type: String
   field :name, type: String
   field :language, type: String
-  field :sha_keys, type: Array
+  # field :sha_keys, type: Array
+  field :forks, type: Integer
+  field :contributors, type: Integer
   field :sha_key_dates, type: Hash
   field :last_updated, type: DateTime, default: "2008-04-01T00:00:00Z"
 
@@ -56,6 +58,25 @@ class Garden
 
   def color
     
+  end
+
+  def classify_tree
+
+    numeric_classification = 0
+
+    if self.contributors
+      numeric_classification = Math.log10(self.contributors).round
+    end
+
+    case numeric_classification
+    when 0
+      classification = "pine"
+    when 1..10
+      classification = "oak"
+    end
+
+    classification
+
   end
 
 end

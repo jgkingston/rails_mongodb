@@ -1,14 +1,27 @@
-%h2= @garden.name
+%h2
+  = @garden.owner
+  = "/"
+  = @garden.name
+  |
+  = link_to "Edit", edit_user_garden_path(@user, @garden)
 
-/ %ol.growth-rings
-/   = render 'commits'
+%h3
+  = @garden.language
 
-/ = @garden.sha_keys
-/ = @garden.sha_key_dates
-/ %br
-/ = @garden.last_updated
-/ %br
-/ = @garden.comment_quality
+%ol.growth-rings
+  / = render 'commits'
+
+= @garden.sha_key_dates.count
+Commits
+%br
+= @garden.contributors
+Contributors
+%br
+= @garden.last_updated
+%br
+= @garden.comment_quality
+= @garden.get_length
+= @garden.age
 
 %h3 Git Commits
 
@@ -18,7 +31,7 @@
 
 .row
   .col-lg-6.col-lg-offset-3
-    %div.chart.attribute-holder{age: @garden.age, length: @garden.get_length, gnarling: @garden.comment_quality, id: @garden.name, initialise: "true", class: @garden.name}
+    %div.chart.attribute-holder{age: @garden.age, length: @garden.get_length, gnarling: @garden.comment_quality, id: @garden.name, initialise: "true", type: @garden.classify_tree, class: @garden.name}
 
       %svg{viewBox: "0 0 840 600", preserveAspectRatio: "none"}
         %g{ class: "#{@garden.name}"}
