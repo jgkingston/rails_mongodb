@@ -2,27 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.acorn {
-
-
-
-  & img {
-
-    width: 100%;
-    position: absolute;
-
-    &:first-child {
-      left: 10px;
-      top: 16px;
-      width: 60%
-    }
-
-    &:last-child {
-      left: 0;
-      top: 1px;
-    }
-
-  }
-
-}

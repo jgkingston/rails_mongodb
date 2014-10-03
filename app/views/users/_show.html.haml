@@ -2,10 +2,6 @@
 .row.forest
   = render 'gardens/grid', user: user
 
-.clearfix
-.footer
-  by Jamie Kingston 2014
-
 .nav{class: "cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left", id: "cbp-spmenu-s1"}
   =label_tag "SSH", "SSH", class: "control-label"
   =text_field_tag "", "", class: "form-control", placeholder: 'git@github.com:jgkingston/rails_mongodb.git'
@@ -14,21 +10,6 @@
   %br
   =submit_tag "Require Tree"
 
-
-
   %a#showLeft
     %i.glyphicon.glyphicon-chevron-right
 
-
-/ .nav.text-center{class: "cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom", id: "bottom-menu"}
-/   .row
-/     .col-xs-12
-/       %a#show-bottom
-/         %i.glyphicon.glyphicon-chevron-up
-/     .col-xs-12
-/       = link_to "Gather Seeds", "javascript:void(0)", class: "gather-seeds"
-
-/ = link_to "Gather Seeds", "javascript:void(0)", class: "gather-seeds btn btn-default"
-
-/ %div.repolist{ajax_path: git_api_repos_user_path(user)}
-/   = render 'users/repolist', user: user
