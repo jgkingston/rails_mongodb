@@ -1,8 +1,6 @@
 /* D3 Tree */
 /* Copyright 2013 Peter Cook (@prcweb); Licensed MIT */
 
-
-
 $(document).ready(function() {
   
   // Tree configuration
@@ -18,6 +16,28 @@ $(document).ready(function() {
   var angleRandomness = 0.7; // Randomness EDIT (factor) 
   var maxDepth = 10; // EDIT This is how you set the tree "maturity". 10 works, 12 is slow. **log2(commits).round?**
 
+  // Build list of trees and bind data
+  var stats = new Array();
+
+  $(".attribute-holder").each(function (i) {
+          stats[i]=$(this).attr("id");
+  });
+
+  var trees = d3.selectAll('.chart').data(stats);
+
+  trees.on('mouseover', regenerate );
+
+  // Draw trees on load 
+  var loadTrees = function(trees){
+
+    trees.each(function (d) {
+
+      regenerate(d);
+
+    });
+  };
+
+  loadTrees(trees)
 
   // Tree creation functions
   function branch(b) {
@@ -59,7 +79,7 @@ $(document).ready(function() {
         i: branches.length,
         x: end.x,
         y: end.y,
-        a: b.a,
+        a: b.a + randomAngleDelta * 0.1,
         l: b.l * lengthDelta,
         d: b.d + 1,
         g: b.g,
@@ -86,27 +106,25 @@ $(document).ready(function() {
   }
 
   function regenerate(d) {
-    console.log(d)
+  
+    // Extract seed parameters from element attributes
     var depth = $("div." + d).attr("age");
     var length = $("div." + d).attr("length");
     var gnarl = $("div." + d).attr("gnarling");
     var name = $("div." + d).attr("id");
     var type = $("div." + d).attr("type");
     var initialise = $("div." + d).attr("initialise");
-    // var type =  $("div." + d).attr("type");
-    console.log(initialise)
+
     branches = [];
     var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl, t: type}; // a = angle, l = length, d = depths, g = gnarl
     branch(seed);
-    if (initialise == "true"){
-      create(name)
-    }
-    else{
-      update(name)
-    }
-    // initialise ? create(name) : update(name);
+
+    if (initialise == "true") { create(name) }
+
+    else { update(name) }
+
     $("div." + d).attr("initialise", "false");
-    // initialise = false
+
   }
 
   function endPt(b) {
@@ -133,7 +151,6 @@ $(document).ready(function() {
   function showColor(d) {
     var color = $("div." + d).attr("color");
   }
-
 
   function create(name) {
     console.log("Creating")
@@ -164,38 +181,4 @@ $(document).ready(function() {
       .attr('y2', y2);
   }
 
-  var stats = new Array();
-  // var datum = $('.attribute-holder').attr("id")
-  // stats.push(datum);
-
-  $(".attribute-holder").each(function (i) {
-          stats[i]=$(this).attr("id");
-  });
-
-  // console.log(stats)
-
-  console.log(stats)
-
-  var trees = d3.selectAll('.chart').data(stats);
-
-  console.log(trees)
-
-  trees.on('mouseover', regenerate );
-
-  var loadTrees = function(trees){
-
-    trees.each(function (d) {
-
-      regenerate(d);
-
-    });
-
-
-  };
-
-  loadTrees(trees)
- 
-
 });
-
-// regenerate(true);

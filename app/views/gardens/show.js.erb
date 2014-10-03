@@ -1,0 +1,7 @@
+$('.forest').html("")
+$(".forest").append("<%= escape_javascript(render('gardens/portrait', user: @user, garden: @garden)) %>")
+
+$(function() {
+$('[data-toggle="tooltip"]').tooltip();  
+})
+

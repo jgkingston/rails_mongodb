@@ -45,31 +45,37 @@ class UsersController < ApplicationController
 
   def require_tree
 
-    request = GitHubApiRequest.new
-
-    request.username = params[:owner]
-    request.repository = params[:repo]
-
-    stats = request.get_stats
-
-    p stats
-    
     # request = GitHubApiRequest.new
 
     # request.username = params[:owner]
     # request.repository = params[:repo]
 
-    # foreign_tree = request.get_repo
+    # stats = request.get_stats
 
-    # github = Github.new oauth_token: @user.token
+    # p stats
+    
+    request = GitHubApiRequest.new
+    request.username = params[:owner]
+    request.repository = params[:repo]
+    foreign_tree = request.get_repo
 
-    # contributors = github.repos.contributors params[:owner], params[:repo]
+    github = Github.new oauth_token: @user.token,
+                        auto_pagination: true
+    commits = github.repos.commits.all params[:owner], params[:repo]
 
-    # p foreign_tree
+    sha_key_dates = commits.flat_map{|commit| [commit["sha"], commit["commit"]["committer"]["date"]]}
+    messages = commits.flat_map{|commit| [ commit['sha'], commit["commit"]["message"] ] }
 
-    # tree_map = Hash[ owner: foreign_tree['owner']['login'], name: foreign_tree['name'], language: foreign_tree['language'] , forks: foreign_tree['forks_count'], contributors: contributors.length ]
+    github = Github.new oauth_token: @user.token
+    contributors = github.repos.contributors params[:owner], params[:repo]
 
-    # @garden = @user.gardens.create tree_map
+
+
+    tree_map = Hash[ owner: foreign_tree['owner']['login'], name: foreign_tree['name'], language: foreign_tree['language'] , forks: foreign_tree['forks_count'], contributors: contributors.length, sha_key_dates: Hash[*sha_key_dates], messages: Hash[*messages] ]
+
+    @garden = @user.gardens.create tree_map
+
+    puts @user
 
     respond_to do |format|
       format.js

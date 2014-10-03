@@ -4,26 +4,9 @@ svg {
   font-family: helvetica, sans-serif;
 }
 
-/*path {
-  stroke: #777;
-} */
-
 line {
   stroke: #777;
 
-}
-
-svg:hover line {
-  stroke: green;
-}
-
-/*svg:hover path {
-  stroke: green;
-}*/
-
-.chart {
-  /*background-color: #383838;*/
-  /*width: 100%;*/
 }
 
 .chart svg {
@@ -33,7 +16,6 @@ svg:hover line {
 
 line {
   fill: none;
-  /*stroke-width: 3px;*/
   vector-effect: non-scaling-stroke;
 }
 

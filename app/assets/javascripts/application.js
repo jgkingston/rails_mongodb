@@ -15,8 +15,8 @@
 //= require bootstrap
 //= require d3.v3.min
 //= require underscore
+//= require imagesloaded.pkgd
+//= require isotope.pkgd
+//= require isotopeSearchFilter.jquery
 //= require_tree .
 
-$(function() {
-$('[data-toggle="tooltip"]').tooltip();  
-})

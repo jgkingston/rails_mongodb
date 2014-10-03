@@ -8,9 +8,10 @@ class Garden
   field :name, type: String
   field :language, type: String
   # field :sha_keys, type: Array
-  field :forks, type: Integer
-  field :contributors, type: Integer
-  field :sha_key_dates, type: Hash
+  field :forks, type: Integer, default: 0
+  field :contributors, type: Integer, default: 0
+  field :sha_key_dates, type: Hash, default: {}
+  field :messages, type: Hash, default: {}
   field :last_updated, type: DateTime, default: "2008-04-01T00:00:00Z"
 
   def age
@@ -18,6 +19,8 @@ class Garden
     if self.growth_rings.length > 0
       growth_rings = self.growth_rings.length
       age = Math.log2(growth_rings).round
+    else
+      age = Math.log2(self.messages.length).round
     end
     age
   end
@@ -47,11 +50,15 @@ class Garden
     messages = self.growth_rings.map{ |ring| ring["message"]}
     messages_lengths = messages.map{ |message| message.length }
     
-    if messages_lengths.size > 0
+    if self.growth_rings.length > 0
+      messages = self.growth_rings.map{ |ring| ring["message"]}
+      messages_lengths = messages.map{ |message| message.length }
       avg_message_length =  messages_lengths.reduce(:+) / messages.length
       gnarling = avg_message_length / 50.0
     else
-      gnarling = 1
+      messages_lengths = self.messages.map{ |k, v| v.length }
+      avg_message_length =  messages_lengths.reduce(:+) / self.messages.length
+      gnarling = avg_message_length / 50.0
     end
     gnarling
   end
@@ -64,7 +71,7 @@ class Garden
 
     numeric_classification = 0
 
-    if self.contributors
+    if self.contributors > 0
       numeric_classification = Math.log10(self.contributors).round
     end
 

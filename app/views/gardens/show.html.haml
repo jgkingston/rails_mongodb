@@ -4,39 +4,50 @@
   = @garden.name
   |
   = link_to "Edit", edit_user_garden_path(@user, @garden)
+  |
+  = link_to "Delete", user_garden_path(@user, @garden), method: :delete
 
 %h3
   = @garden.language
-
-%ol.growth-rings
-  / = render 'commits'
-
-= @garden.sha_key_dates.count
-Commits
-%br
-= @garden.contributors
-Contributors
-%br
-= @garden.last_updated
-%br
-= @garden.comment_quality
-= @garden.get_length
-= @garden.age
-
-%h3 Git Commits
-
-= link_to "Get Commits", "javascript:void(0)", class: "commits-log", ajax_path: git_api_commits_user_garden_path(@user, @garden)
-%br
-= link_to "Plant Tree", user_garden_growth_rings_path(@user, @garden), method: :post
 
 .row
   .col-lg-6.col-lg-offset-3
     %div.chart.attribute-holder{age: @garden.age, length: @garden.get_length, gnarling: @garden.comment_quality, id: @garden.name, initialise: "true", type: @garden.classify_tree, class: @garden.name}
 
-      %svg{viewBox: "0 0 840 600", preserveAspectRatio: "none"}
+      %svg{viewBox: "0 0 840 600", class: @garden.language}
         %g{ class: "#{@garden.name}"}
+  .col-lg-3
+    %div
+      = @garden.sha_key_dates.count
+      Commits
+      %br
+      = @garden.contributors
+      Contributors
+      %br
+      = "Last updated #{@garden.last_updated.strftime("%l:%M %p")} on #{@garden.last_updated.strftime("%m/%d/%Y")}"
+      %br
+      = @garden.comment_quality
+      %br
+      = "Median lines of code: #{@garden.get_length} "
+      %br
+      = @garden.age
+
+/ %h4
+/   = @garden.inspect
+
+/ %ol.growth-rings
+/   / = render 'commits'
 
 
-%button{class: "regenerate", tree: @garden.name}Regenerate
 
-%script{:src => "/assets/main.js?body=1"}
+/ %h3 Git Commits
+
+= link_to "Get Commits", "javascript:void(0)", class: "commits-log", ajax_path: git_api_commits_user_garden_path(@user, @garden)
+%br
+= link_to "Plant Tree", user_garden_growth_rings_path(@user, @garden), method: :post
+
+
+
+/ %button{class: "regenerate", tree: @garden.name}Regenerate
+
+/ %script{:src => "/assets/main.js?body=1"}

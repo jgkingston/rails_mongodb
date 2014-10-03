@@ -1,31 +1,34 @@
 - if user_signed_in?
   
-  = label_tag 'owner'
-  = text_field_tag 'owner'
-  = label_tag 'repo'
-  = text_field_tag 'repo'
-  = link_to "Require Tree", "javascript:void(0)", class: "btn btn-default require-tree submit", ajax_path: require_tree_user_path(current_user)
+  / = label_tag 'owner'
+  / = text_field_tag 'owner'
+  / = label_tag 'repo'
+  / = text_field_tag 'repo'
+  / = link_to "Require Tree", "javascript:void(0)", class: "btn btn-default require-tree submit", ajax_path: require_tree_user_path(current_user)
 
   =render 'users/show', user: current_user
 
 
 
 - else
-  #large.jumbotron.input
-    %h1 Require Tree
+  #large.jumbotron
+    %h1 require_Tree
     %p What if I told you that you were looking at a GitHub repository? Click below to see yours.
-    %p= link_to "Sign Up »", new_user_registration_path, class: "btn btn-primary btn-lg"
-    .row
-      .col-lg-6.col-lg-offset-3
-        %div.chart.attribute-holder{age: 10, length: 130, gnarling: 1, id: 'example'}
-      
-          %svg{viewBox: "0 0 840 600", preserveAspectRatio: "none"}
-            %g{class: 'example'}
+    = link_to new_user_registration_path do
+      %ul.list-inline
+      %div.chart.attribute-holder{age: 8, length: 130, gnarling: 1, id: 'example', initialise: "true", type: "oak", class: 'example'}
+        %svg.example
+          %svg{viewBox: "0 0 840 600"}
+            %g.example
 
-          %button{class: "regenerate"}Regenerate
+      /     %button{class: "regenerate"}Regenerate
+      / %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.name, initialise: "true", type: garden.classify_tree, class: garden.name}
+      /   %svg{class: garden.language}
+      /     %svg{viewBox: "0 0 840 600", class: garden.language}
+      /       %g{class: "#{garden.name}"}
 
 
-  %script{:src => "/assets/main.js?body=1"}
+  / %script{:src => "/assets/main.js?body=1"}
 
     
 

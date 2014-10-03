@@ -6,11 +6,17 @@ class GardensController < ApplicationController
   before_action :find_garden, only: [:show, :edit, :update, :destroy, :git_api_commits] 
 
   def index
-    @gardens = Garden.all
+    puts "I am in the index"
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show
-    
+    respond_to do |format|
+      format.js
+      # format.html
+    end
   end
 
   def new
@@ -21,7 +27,7 @@ class GardensController < ApplicationController
     @user = current_user
     @garden = @user.gardens.create garden_params
     if @garden.save == true
-      redirect_to user_path(current_user)
+      redirect_to root_path
       flash[:success] = "Garden successfully added."
     else
       render :new
@@ -42,7 +48,7 @@ class GardensController < ApplicationController
 
   def destroy
     @garden.destroy
-    redirect_to gardens_path
+    redirect_to root_path
   end
 
   def git_api_commits
@@ -80,7 +86,7 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-    params.require(:garden).permit(:name, :sha_key_dates, :language)
+    params.require(:garden).permit(:owner, :name, :sha_key_dates, :messages, :language)
   end
 
 end

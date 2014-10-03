@@ -1,0 +1,6 @@
+$('.forest').html("")
+$(".forest").append("<%= escape_javascript(render('gardens/portrait')) %>")
+
+$(function() {
+$('[data-toggle="tooltip"]').tooltip();  
+})

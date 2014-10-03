@@ -1,0 +1,55 @@
+#sidebar.column.col-sm-2.col-xs-1.sidebar-offcanvas
+  %ul.nav
+    %li
+      %a.visible-xs.text-center{"data-toggle" => "offcanvas", :href => "#"}
+        %i.glyphicon.glyphicon-chevron-right
+  %ul#lg-menu.nav.hidden-xs
+    %li.active
+      %a{:href => "#featured"}
+        %i.glyphicon.glyphicon-list-alt
+        Featured
+    %li
+      %a{:href => "#stories"}
+        %i.glyphicon.glyphicon-list
+        Stories
+    %li
+      %a{:href => "#"}
+        %i.glyphicon.glyphicon-paperclip
+        Saved
+    %li
+      %a{:href => "#"}
+        %i.glyphicon.glyphicon-refresh
+        Refresh
+  %div#sidebar-footer.list-unstyled.hidden-xs
+    
+  / tiny only nav
+  %ul#xs-menu.nav.visible-xs
+    %li
+      %a.text-center{:href => "#featured"}
+        %i.glyphicon.glyphicon-list-alt
+    %li
+      %a.text-center{:href => "#stories"}
+        %i.glyphicon.glyphicon-list
+    %li
+      %a.text-center{:href => "#"}
+        %i.glyphicon.glyphicon-paperclip
+    %li
+      %a.text-center{:href => "#"}
+        %i.glyphicon.glyphicon-refresh
+
+
+.col-sm-10.col-xs-11
+  - user.gardens.each do |garden|
+    .col-lg-3.col-md-4.col-sm-6.item-container
+
+      = link_to "javascript:void(0)", class: "load-portrait item", ajax_path: user_garden_path(user, garden) do
+        %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.name, initialise: "true", type: garden.classify_tree, class: garden.name}
+          %svg{class: "#{garden.language}"}
+            %svg{viewBox: "0 0 840 600", class: garden.language}
+              %g{class: "#{garden.name}"}
+        .text-center.name-plate
+          = garden.owner
+          = "/"
+          = garden.name
+
+%script{:src => "/assets/main.js?body=1"}

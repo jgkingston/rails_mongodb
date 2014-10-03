@@ -32,18 +32,19 @@ class GrowthRingsController < ApplicationController
 
     request.get_detailed_commits @garden.sha_key_dates, @garden.last_updated
 
-    @commits = request.detailed_commits
+    commits = request.detailed_commits
     
-    @commits.each do |commit|
+    commits.each do |commit|
       commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
     end
 
-    if @commits.length > 0
-      @garden.update_attributes(last_updated: @commits[0]["commit"]["committer"]["date"])
+    if commits.length > 0
+      @garden.update_attributes(last_updated: commits[0]["commit"]["committer"]["date"])
+      redirect_to root_path
     end
 
-    redirect_to user_garden_path(@user, @garden)
-
+    
+    redirect_to root_path
   end
 
   def edit

@@ -1,2 +1,2 @@
 $('.repolist').html("")
-$(".repolist").append("<%= escape_javascript(render('users/repolist', repolist: @repolist)) %>")
+$(".repolist").append("<%= escape_javascript(render('users/repolist', user: @user)) %>")

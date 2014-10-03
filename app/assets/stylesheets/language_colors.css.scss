@@ -1,0 +1,243 @@
+// Place all the styles related to the gardens controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here:hover { http:hover {//sass-lang.com/
+
+    .Arduino:hover { color: #bd79d1}
+    .Java:hover { color: #b07219}
+    .VHDL:hover { color: #543978}
+    .Scala:hover { color: #7dd3b0}
+    .Emacs Lisp:hover { color: #c065db}
+    .Delphi:hover { color: #b0ce4e}
+    .Ada:hover { color: #02f88c}
+    .VimL:hover { color: #199c4b}
+    .Perl:hover { color: #0298c3}
+    .Lua:hover { color: #fa1fa1}
+    .Rebol:hover { color: #358a5b}
+    .Verilog:hover { color: #848bf3}
+    .Factor:hover { color: #636746}
+    .Ioke:hover { color: #078193}
+    .R:hover { color: #198ce7}
+    .Erlang:hover { color: #949e0e}
+    .Nu:hover { color: #c9df40}
+    .AutoHotkey:hover { color: #6594b9}
+    .Clojure:hover { color: #db5855}
+    .Shell:hover { color: #5861ce}
+    .Assembly:hover { color: #a67219}
+    .Parrot:hover { color: #f3ca0a}
+    // .C# :hover { color: #5a25a2}
+    .Turing:hover { color: #45f715}
+    .AppleScript:hover { color: #3581ba}
+    .Eiffel:hover { color: #946d57}
+    .Common Lisp:hover { color: #3fb68b}
+    .Dart:hover { color: #cccccc}
+    .SuperCollider:hover { color: #46390b}
+    .CoffeeScript:hover { color: #244776}
+    .XQuery:hover { color: #2700e2}
+    .Haskell:hover { color: #29b544}
+    .Racket:hover { color: #ae17ff}
+    .Elixir:hover { color: #6e4a7e}
+    .HaXe:hover { color: #346d51}
+    .Ruby:hover { color: #701516}
+    .Self:hover { color: #0579aa}
+    .Fantom:hover { color: #dbded5}
+    .Groovy:hover { color: #e69f56}
+    .C:hover { color: #555}
+    .JavaScript:hover { color: #f15501}
+    .D:hover { color: #fcd46d}
+    .ooc:hover { color: #b0b77e}
+    .C++:hover { color: #f34b7d}
+    .Dylan:hover { color: #3ebc27}
+    .Nimrod:hover { color: #37775b}
+    .Standard ML:hover { color: #dc566d}
+    .Objective-C:hover { color: #f15501}
+    .Nemerle:hover { color: #0d3c6e}
+    .Mirah:hover { color: #c7a938}
+    .Boo:hover { color: #d4bec1}
+    .Objective-J:hover { color: #ff0c5a}
+    .Rust:hover { color: #dea584}
+    .Prolog:hover { color: #74283c}
+    .Ecl:hover { color: #8a1267}
+    .Gosu:hover { color: #82937f}
+    .FORTRAN:hover { color: #4d41b1}
+    .ColdFusion:hover { color: #ed2cd6}
+    .OCaml:hover { color: #3be133}
+    .Fancy:hover { color: #7b9db4}
+    .Pure Data:hover { color: #f15501}
+    .Python:hover { color: #3581ba}
+    .Tcl:hover { color: #e4cc98}
+    .Arc:hover { color: #ca2afe}
+    .Puppet:hover { color: #cc5555}
+    .Io:hover { color: #a9188d}
+    .Max:hover { color: #ce279c}
+    .Go:hover { color: #8d04eb}
+    .ASP:hover { color: #6a40fd}
+    .Visual Basic:hover { color: #945db7}
+    .PHP:hover { color: #6e03c1}
+    .Scheme:hover { color: #1e4aec}
+    .Vala:hover { color: #3581ba}
+    .Smalltalk:hover { color: #596706}
+    .Matlab:hover { color: #bb92ac}
+    // .C# :hover { color: #bb92af}
+
+
+
+
+
+
+
+
+   svg.Arduino line { stroke: #bd79d1}
+   svg.Java line { stroke: #b07219}
+   svg.VHDL line { stroke: #543978}
+   svg.Scala line { stroke: #7dd3b0}
+   svg.Emacs Lisp line { stroke: #c065db}
+   svg.Delphi line { stroke: #b0ce4e}
+   svg.Ada line { stroke: #02f88c}
+   svg.VimL line { stroke: #199c4b}
+   svg.Perl line { stroke: #0298c3}
+   svg.Lua line { stroke: #fa1fa1}
+   svg.Rebol line { stroke: #358a5b}
+   svg.Verilog line { stroke: #848bf3}
+   svg.Factor line { stroke: #636746}
+   svg.Ioke line { stroke: #078193}
+   svg.R line { stroke: #198ce7}
+   svg.Erlang line { stroke: #949e0e}
+   svg.Nu line { stroke: #c9df40}
+   svg.AutoHotkey line { stroke: #6594b9}
+   svg.Clojure line { stroke: #db5855}
+   svg.Shell line { stroke: #5861ce}
+   svg.Assembly line { stroke: #a67219}
+   svg.Parrot line { stroke: #f3ca0a}
+   // svg.C#  line { stroke: #5a25a2}
+   svg.Turing line { stroke: #45f715}
+   svg.AppleScript line { stroke: #3581ba}
+   svg.Eiffel line { stroke: #946d57}
+   svg.Common Lisp line { stroke: #3fb68b}
+   svg.Dart line { stroke: #cccccc}
+   svg.SuperCollider line { stroke: #46390b}
+   svg.CoffeeScript line { stroke: #244776}
+   svg.XQuery line { stroke: #2700e2}
+   svg.Haskell line { stroke: #29b544}
+   svg.Racket line { stroke: #ae17ff}
+   svg.Elixir line { stroke: #6e4a7e}
+   svg.HaXe line { stroke: #346d51}
+   svg.Ruby line { stroke: #701516}
+   svg.Self line { stroke: #0579aa}
+   svg.Fantom line { stroke: #dbded5}
+   svg.Groovy line { stroke: #e69f56}
+   svg.C line { stroke: #555}
+   svg.JavaScript line { stroke: #f15501}
+   svg.D line { stroke: #fcd46d}
+   svg.ooc line { stroke: #b0b77e}
+   svg.C++ line { stroke: #f34b7d}
+   svg.Dylan line { stroke: #3ebc27}
+   svg.Nimrod line { stroke: #37775b}
+   svg.Standard ML line { stroke: #dc566d}
+   svg.Objective-C line { stroke: #f15501}
+   svg.Nemerle line { stroke: #0d3c6e}
+   svg.Mirah line { stroke: #c7a938}
+   svg.Boo line { stroke: #d4bec1}
+   svg.Objective-J line { stroke: #ff0c5a}
+   svg.Rust line { stroke: #dea584}
+   svg.Prolog line { stroke: #74283c}
+   svg.Ecl line { stroke: #8a1267}
+   svg.Gosu line { stroke: #82937f}
+   svg.FORTRAN line { stroke: #4d41b1}
+   svg.ColdFusion line { stroke: #ed2cd6}
+   svg.OCaml line { stroke: #3be133}
+   svg.Fancy line { stroke: #7b9db4}
+   svg.Pure Data line { stroke: #f15501}
+   svg.Python line { stroke: #3581ba}
+   svg.Tcl line { stroke: #e4cc98}
+   svg.Arc line { stroke: #ca2afe}
+   svg.Puppet line { stroke: #cc5555}
+   svg.Io line { stroke: #a9188d}
+   svg.Max line { stroke: #ce279c}
+   svg.Go line { stroke: #8d04eb}
+   svg.ASP line { stroke: #6a40fd}
+   svg.Visual Basic line { stroke: #945db7}
+   svg.PHP line { stroke: #6e03c1}
+   svg.Scheme line { stroke: #1e4aec}
+   svg.Vala line { stroke: #3581ba}
+   svg.Smalltalk line { stroke: #596706}
+   svg.Matlab line { stroke: #bb92ac}
+   // svg.C#  line { stroke: #bb92af}
+
+   svg.grey-tree line { stroke: #777}
+
+   svg.Arduino.grey-tree:hover line { stroke: #bd79d1}
+   svg.Java.grey-tree:hover line { stroke: #b07219}
+   svg.VHDL.grey-tree:hover line { stroke: #543978}
+   svg.Scala.grey-tree:hover line { stroke: #7dd3b0}
+   svg.Emacs Lisp.grey-tree:hover line { stroke: #c065db}
+   svg.Delphi.grey-tree:hover line { stroke: #b0ce4e}
+   svg.Ada.grey-tree:hover line { stroke: #02f88c}
+   svg.VimL.grey-tree:hover line { stroke: #199c4b}
+   svg.Perl.grey-tree:hover line { stroke: #0298c3}
+   svg.Lua.grey-tree:hover line { stroke: #fa1fa1}
+   svg.Rebol.grey-tree:hover line { stroke: #358a5b}
+   svg.Verilog.grey-tree:hover line { stroke: #848bf3}
+   svg.Factor.grey-tree:hover line { stroke: #636746}
+   svg.Ioke.grey-tree:hover line { stroke: #078193}
+   svg.R.grey-tree:hover line { stroke: #198ce7}
+   svg.Erlang.grey-tree:hover line { stroke: #949e0e}
+   svg.Nu.grey-tree:hover line { stroke: #c9df40}
+   svg.AutoHotkey.grey-tree:hover line { stroke: #6594b9}
+   svg.Clojure.grey-tree:hover line { stroke: #db5855}
+   svg.Shell.grey-tree:hover line { stroke: #5861ce}
+   svg.Assembly.grey-tree:hover line { stroke: #a67219}
+   svg.Parrot.grey-tree:hover line { stroke: #f3ca0a}
+   // svg.C# .grey-tree:hover line { stroke: #5a25a2}
+   svg.Turing.grey-tree:hover line { stroke: #45f715}
+   svg.AppleScript.grey-tree:hover line { stroke: #3581ba}
+   svg.Eiffel.grey-tree:hover line { stroke: #946d57}
+   svg.Common Lisp.grey-tree:hover line { stroke: #3fb68b}
+   svg.Dart.grey-tree:hover line { stroke: #cccccc}
+   svg.SuperCollider.grey-tree:hover line { stroke: #46390b}
+   svg.CoffeeScript.grey-tree:hover line { stroke: #244776}
+   svg.XQuery.grey-tree:hover line { stroke: #2700e2}
+   svg.Haskell.grey-tree:hover line { stroke: #29b544}
+   svg.Racket.grey-tree:hover line { stroke: #ae17ff}
+   svg.Elixir.grey-tree:hover line { stroke: #6e4a7e}
+   svg.HaXe.grey-tree:hover line { stroke: #346d51}
+   svg.Ruby.grey-tree:hover line { stroke: #701516}
+   svg.Self.grey-tree:hover line { stroke: #0579aa}
+   svg.Fantom.grey-tree:hover line { stroke: #dbded5}
+   svg.Groovy.grey-tree:hover line { stroke: #e69f56}
+   svg.C.grey-tree:hover line { stroke: #555}
+   svg.JavaScript.grey-tree:hover line { stroke: #f15501}
+   svg.D.grey-tree:hover line { stroke: #fcd46d}
+   svg.ooc.grey-tree:hover line { stroke: #b0b77e}
+   svg.C++.grey-tree:hover line { stroke: #f34b7d}
+   svg.Dylan.grey-tree:hover line { stroke: #3ebc27}
+   svg.Nimrod.grey-tree:hover line { stroke: #37775b}
+   svg.Standard ML.grey-tree:hover line { stroke: #dc566d}
+   svg.Objective-C.grey-tree:hover line { stroke: #f15501}
+   svg.Nemerle.grey-tree:hover line { stroke: #0d3c6e}
+   svg.Mirah.grey-tree:hover line { stroke: #c7a938}
+   svg.Boo.grey-tree:hover line { stroke: #d4bec1}
+   svg.Objective-J.grey-tree:hover line { stroke: #ff0c5a}
+   svg.Rust.grey-tree:hover line { stroke: #dea584}
+   svg.Prolog.grey-tree:hover line { stroke: #74283c}
+   svg.Ecl.grey-tree:hover line { stroke: #8a1267}
+   svg.Gosu.grey-tree:hover line { stroke: #82937f}
+   svg.FORTRAN.grey-tree:hover line { stroke: #4d41b1}
+   svg.ColdFusion.grey-tree:hover line { stroke: #ed2cd6}
+   svg.OCaml.grey-tree:hover line { stroke: #3be133}
+   svg.Fancy.grey-tree:hover line { stroke: #7b9db4}
+   svg.Pure Data.grey-tree:hover line { stroke: #f15501}
+   svg.Python.grey-tree:hover line { stroke: #3581ba}
+   svg.Tcl.grey-tree:hover line { stroke: #e4cc98}
+   svg.Arc.grey-tree:hover line { stroke: #ca2afe}
+   svg.Puppet.grey-tree:hover line { stroke: #cc5555}
+   svg.Io.grey-tree:hover line { stroke: #a9188d}
+   svg.Max.grey-tree:hover line { stroke: #ce279c}
+   svg.Go.grey-tree:hover line { stroke: #8d04eb}
+   svg.ASP.grey-tree:hover line { stroke: #6a40fd}
+   svg.Visual Basic.grey-tree:hover line { stroke: #945db7}
+   svg.PHP.grey-tree:hover line { stroke: #6e03c1}
+   svg.Scheme.grey-tree:hover line { stroke: #1e4aec}
+   svg.Vala.grey-tree:hover line { stroke: #3581ba}
+   svg.Smalltalk.grey-tree:hover line { stroke: #596706}
+   svg.Matlab.grey-tree:hover line { stroke: #bb92ac}
+   // svg.C# .grey-tree:hover line { stroke: #bb92af}
