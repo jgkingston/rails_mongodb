@@ -23,7 +23,7 @@ class User
   field :current_sign_in_ip,  type: String
   field :last_sign_in_ip,     type: String
 
-  field :github_username,            type: String
+  field :github_username,     type: String
   field :user_repos,          type: Array
   field :token,               type: String, default: "12898f0c3b6b2c07372f35cf9769350fe10c8a2e"
 

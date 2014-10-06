@@ -7,7 +7,7 @@
 
 
 // Grid View
-a.load-portrait {
+a, a.load-portrait {
   text-decoration: none;
   color: #555;
 }
@@ -19,7 +19,9 @@ a.load-portrait {
 }
 
 
-// Portrait View
+// Portrait View Nav Elements
+
+  // Left Nav
 
 .left-nav {
     overflow-y:scroll;
@@ -36,10 +38,12 @@ ul.side-gardens {
 
 
 @media (max-width: 992px) {
+
+
   .left-nav {
     overflow-y: auto;
     overflow-x: scroll;
-    max-height: 100vw;
+    height: auto;
   }
 
   .left-nav ul.side-gardens {
@@ -52,16 +56,21 @@ ul.side-gardens {
 
 }
 
+  // Rigth Nav
+
 .right-info {
   overflow-y:scroll;
   max-height: 100%;
   padding-top: 23px;
 }
 
+
+  // Portrait
+
 .delete-icon {
   position: absolute;
-  bottom: 0em;
-  right: 10em;
+  bottom: 0%;
+  right: 20%;
   width: 4em;
   opacity: 0.2;
 }

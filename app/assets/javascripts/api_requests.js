@@ -1,11 +1,14 @@
 
 // jQuery AJAX get repos from github api based on owner name
 $(document).on('click', '.gather-seeds', function() {
-  console.log("Gathering ...")
+  
+  var owner = $('#owner').val();
+
   $.ajax({
-    url: $('.repolist').attr('ajax_path') ,
+    url: $(this).attr('ajax_path') ,
     type: 'GET',
-    dataType: 'script'
+    dataType: 'script',
+    data: {owner: owner}
     })
 });
 
@@ -28,7 +31,6 @@ $(document).on('click', '.require-tree', function() {
 $(document).on('click', '.plant-seed', function() {
   console.log("Planting seed...")
 
-  
   $.ajax({
     url: $(this).attr('ajax_path') ,
     type: 'GET',

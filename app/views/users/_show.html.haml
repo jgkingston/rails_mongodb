@@ -1,14 +1,31 @@
-
+/ = link_to "Sign Up with GitHub", "/auth/github"
 .row.forest
   = render 'gardens/grid', user: user
 
 .nav{class: "cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left", id: "cbp-spmenu-s1"}
+  
   =label_tag "SSH", "SSH", class: "control-label"
   =text_field_tag "", "", class: "form-control", placeholder: 'git@github.com:jgkingston/rails_mongodb.git'
-  =label_tag "HHTPS", "HTTPS", class: "control-label"
-  =text_field_tag "HTTPS", "", class: "form-control", placeholder: 'https://github.com/jgkingston/rails_mongodb.git'
+  = link_to "Require Tree", "javascript:void(0)", class: "btn gather-seeds", ajax_path: git_api_repos_user_path(user)
+
   %br
-  =submit_tag "Require Tree"
+  %br
+  %div.text-center
+    = "-OR-"
+  %br
+
+  = text_field_tag "owner", "", class: "gather-input form-control", placeholder: 'github profile username'
+  = link_to "Gather Seedlings", "javascript:void(0)", class: "btn gather-seeds", ajax_path: git_api_repos_user_path(user)
+  .repolist-panel
+    %ul.repolist
+      = render 'users/repolist', user: user
+ 
+  %br
+  / %br
+  / =label_tag "HHTPS", "HTTPS", class: "control-label"
+  / =text_field_tag "HTTPS", "", class: "form-control", placeholder: 'https://github.com/jgkingston/rails_mongodb.git'
+  / %br
+  / = link_to "Require Tree", "javascript:void(0)", class: "btn gather-seeds", ajax_path: git_api_repos_user_path(user)
 
   %a#showLeft
     %i.glyphicon.glyphicon-chevron-right

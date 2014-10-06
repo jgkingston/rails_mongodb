@@ -44,15 +44,6 @@ class UsersController < ApplicationController
   end
 
   def require_tree
-
-    # request = GitHubApiRequest.new
-
-    # request.username = params[:owner]
-    # request.repository = params[:repo]
-
-    # stats = request.get_stats
-
-    # p stats
     
     request = GitHubApiRequest.new
     request.username = params[:owner]
@@ -88,9 +79,9 @@ class UsersController < ApplicationController
     github = Github.new oauth_token: @user.token,
                         auto_pagination: true
 
-    @repos = github.repos.list user: @user.github_username
+    @repos = github.repos.list user: params[:owner]
 
-    repository_names = @repos.map{|repo| Hash[  name: repo.name,
+    repository_names = @repos.map{ |repo| Hash[  name: repo.name,
                                                 owner: repo.owner.login,
                                                 language: repo.language, 
                                                 forks: repo.forks_count

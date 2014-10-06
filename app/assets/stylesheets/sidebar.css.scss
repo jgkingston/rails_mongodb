@@ -52,3 +52,8 @@
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
+
+.repolist-panel {
+    overflow-y: scroll;
+    max-height: 50%;
+}
