@@ -31,11 +31,7 @@ $(document).on('click', '.load-portrait', function() {
 
 // Scroll to info panel on small screen in portrait view on click
 
-$(document).on('click', '.portrait', function() {
 
-  
-
-});
 
 
 

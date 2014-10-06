@@ -6,7 +6,6 @@ class GardensController < ApplicationController
   before_action :find_garden, only: [:show, :edit, :update, :destroy, :git_api_commits] 
 
   def index
-    puts "I am in the index"
     respond_to do |format|
       format.js
     end

@@ -60,8 +60,6 @@ class UsersController < ApplicationController
     github = Github.new oauth_token: @user.token
     contributors = github.repos.contributors params[:owner], params[:repo]
 
-
-
     tree_map = Hash[ owner: foreign_tree['owner']['login'], name: foreign_tree['name'], language: foreign_tree['language'] , forks: foreign_tree['forks_count'], contributors: contributors.length, sha_key_dates: Hash[*sha_key_dates], messages: Hash[*messages] ]
 
     @garden = @user.gardens.create tree_map
