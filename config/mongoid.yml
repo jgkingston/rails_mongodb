@@ -5,13 +5,13 @@ production:
       # connection setup. 
       # Use environment variables or a config file to keep your 
       # credentials safe.
-      uri: 'mongodb://heroku_app30461403:ra9piq15gk6sg8583i85298uon@ds043170.mongolab.com:43170/heroku_app30461403'
+      uri: ENV['MONGOLAB_URI']
       options: 
         # The default consistency is :eventual, which reads from 
         # secondaries when possible. 
         # Strong forces reads to primary. 
         # We recommend using strong consistency.
-        consistency: :strong
+        # consistency: :strong
         # max_retries specifies the number of times to attempt an 
         # operation before giving up. Default 30 seconds
         max_retries: 30
