@@ -40,11 +40,11 @@ class GrowthRingsController < ApplicationController
 
     if commits.length > 0
       @garden.update_attributes(last_updated: commits[0]["commit"]["committer"]["date"])
-      redirect_to root_path
+
     end
 
-    
     redirect_to root_path
+
   end
 
   def edit

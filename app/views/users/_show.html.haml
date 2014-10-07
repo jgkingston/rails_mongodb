@@ -5,7 +5,7 @@
 .nav{class: "cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left", id: "cbp-spmenu-s1"}
   
   =label_tag "SSH", "SSH", class: "control-label"
-  =text_field_tag "", "", class: "form-control", placeholder: 'git@github.com:jgkingston/rails_mongodb.git'
+  =text_field_tag "SSH", "", class: "form-control", placeholder: 'git@github.com:jgkingston/rails_mongodb.git'
   = link_to "Require Tree", "javascript:void(0)", class: "btn gather-seeds", ajax_path: git_api_repos_user_path(user)
 
   %br

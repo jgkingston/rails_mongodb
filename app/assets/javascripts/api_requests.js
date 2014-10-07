@@ -4,6 +4,8 @@ $(document).on('click', '.gather-seeds', function() {
   
   var owner = $('#owner').val();
 
+  console.log("Gathering seeds ...")
+
   $.ajax({
     url: $(this).attr('ajax_path') ,
     type: 'GET',
@@ -14,8 +16,13 @@ $(document).on('click', '.gather-seeds', function() {
 
 
 $(document).on('click', '.require-tree', function() {
-  var owner = $('#owner').val();
-  var repo = $('#repo').val();
+  
+  var ssh = $('#SSH').val();
+
+  var owner = ssh.parse
+
+  var repo = ssh.parse
+  
   console.log("Requiring tree...")
 
   if( owner != "" && repo != "") {
