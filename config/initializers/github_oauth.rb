@@ -1,5 +1,3 @@
-p Figaro.env.client_id
-
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :github, 
   Figaro.env.client_id,
