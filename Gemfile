@@ -43,7 +43,8 @@ gem "github_api"
 gem 'oauth2'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
-gem "figaro"
+gem 'figaro'
+gem 'rails-12-factor'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
