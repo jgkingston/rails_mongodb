@@ -6,7 +6,7 @@
   
   =label_tag "SSH", "SSH", class: "control-label"
   =text_field_tag "SSH", "", class: "form-control", placeholder: 'git@github.com:jgkingston/rails_mongodb.git'
-  = link_to "Require Tree", "javascript:void(0)", class: "btn gather-seeds", ajax_path: git_api_repos_user_path(user)
+  = link_to "Require Tree", "javascript:void(0)", class: "btn require-tree", ajax_path: require_tree_user_path(user)
 
   %br
   %br
@@ -27,6 +27,6 @@
   / %br
   / = link_to "Require Tree", "javascript:void(0)", class: "btn gather-seeds", ajax_path: git_api_repos_user_path(user)
 
-  %a#showLeft
+  %a#showLeft{href: "#"}
     %i.glyphicon.glyphicon-chevron-right
 

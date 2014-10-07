@@ -19,11 +19,13 @@ $(document).on('click', '.require-tree', function() {
   
   var ssh = $('#SSH').val();
 
-  var owner = ssh.parse
+  var ssh_array = ssh.split("/");
 
-  var repo = ssh.parse
-  
-  console.log("Requiring tree...")
+  var owner = ssh_array[3];
+
+  var repo = ssh_array[4].slice(0,-4);
+
+  console.log("Requiring tree...");
 
   if( owner != "" && repo != "") {
     $.ajax({

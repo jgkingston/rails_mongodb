@@ -1,9 +1,9 @@
 
 .col-md-6.col-md-push-2.portrait
-  %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.name, initialise: "true", type: garden.classify_tree, class: garden.name}
+  %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.safe_name, initialise: "true", type: garden.classify_tree, class: garden.safe_name}
 
     %svg{viewBox: "0 0 840 600", class: garden.language}
-      %g{ class: "#{garden.name}"}
+      %g{ class: "#{garden.safe_name}"}
   = link_to user_garden_path(@user, @garden), method: :delete do
     = image_tag 'axe2.png', class: "delete-icon"\
 
@@ -13,9 +13,9 @@
       - if side_garden != garden
         %li{"data-toggle" => "tooltip", "data-placement" => "bottom", "title" => "", "data-original-title" => side_garden.name}
           = link_to "javascript:void(0)", class: "load-portrait", ajax_path: user_garden_path(user, side_garden) do
-            %div.chart.attribute-holder{age: side_garden.age, length: side_garden.get_length, gnarling: side_garden.comment_quality, id: side_garden.name, initialise: "true", type: side_garden.classify_tree, class: side_garden.name}
+            %div.chart.attribute-holder{age: side_garden.age, length: side_garden.get_length, gnarling: side_garden.comment_quality, id: side_garden.safe_name, initialise: "true", type: side_garden.classify_tree, class: side_garden.safe_name}
               %svg{viewBox: "0 0 840 600", class: "#{side_garden.language} grey-tree"}
-                %g{ class: "#{side_garden.name}"}
+                %g{ class: "#{side_garden.safe_name}"}
 
 
 .col-md-4.right-info

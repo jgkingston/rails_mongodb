@@ -13,14 +13,14 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand{:href => "/"} require_Tree
+        %a.navbar-brand{:href => "/"} require_Tree  
       .navbar-collapse.collapse.navbar-responsive-collapse
         - if user_signed_in?
           %ul.nav.navbar-nav
             %li
-              %a.grid-view{ajax_path: user_gardens_path(current_user)} Grid
-            %li
-              %a{:href => "#"} Portrait
+              %a.grid-view{href: "#", ajax_path: user_gardens_path(current_user)} Grid
+            / %li
+            /   %a{href: "#"} Portrait
           %form.navbar-form.navbar-left
             %input#search-term.form-control.col-lg-8{:placeholder => "Search", :type => "text"}/
         %ul.nav.navbar-nav.navbar-right

@@ -1,10 +1,4 @@
 - if user_signed_in?
-  
-  / = label_tag 'owner'
-  / = text_field_tag 'owner'
-  / = label_tag 'repo'
-  / = text_field_tag 'repo'
-  / = link_to "Require Tree", "javascript:void(0)", class: "btn btn-default require-tree submit", ajax_path: require_tree_user_path(current_user)
 
   =render 'users/show', user: current_user
 
@@ -20,15 +14,4 @@
         %svg.example
           %svg{viewBox: "0 0 840 600"}
             %g.example
-
-      /     %button{class: "regenerate"}Regenerate
-      / %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.name, initialise: "true", type: garden.classify_tree, class: garden.name}
-      /   %svg{class: garden.language}
-      /     %svg{viewBox: "0 0 840 600", class: garden.language}
-      /       %g{class: "#{garden.name}"}
-
-
-  / %script{:src => "/assets/main.js?body=1"}
-
-    
 

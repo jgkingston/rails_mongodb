@@ -14,6 +14,12 @@ class Garden
   field :messages, type: Hash, default: {}
   field :last_updated, type: DateTime, default: "2008-04-01T00:00:00Z"
 
+  def safe_name
+
+    self.name.gsub(/[.]/, '-')
+
+  end
+
   def age
     age = 0
     if self.growth_rings.length > 0

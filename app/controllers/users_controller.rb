@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     request.username = params[:owner]
     request.repository = params[:repo]
     foreign_tree = request.get_repo
+  
 
     github = Github.new oauth_token: @user.token,
                         auto_pagination: true
