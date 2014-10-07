@@ -16,6 +16,14 @@ $(document).on('click', '.gather-seeds', function() {
 
 
 $(document).on('click', '.require-tree', function() {
+
+  if ($('#showLeft').hasClass('active')) {
+
+    $(this).toggleClass('active');
+    $('#cbp-spmenu-s1').toggleClass('cbp-spmenu-open');
+    $('.forest').toggleClass('counter-push-margin');
+    $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+  }
   
   var ssh = $('#SSH').val();
 
@@ -38,6 +46,15 @@ $(document).on('click', '.require-tree', function() {
 });
 
 $(document).on('click', '.plant-seed', function() {
+
+  if ($('#showLeft').hasClass('active')) {
+
+    $(this).toggleClass('active');
+    $('#cbp-spmenu-s1').toggleClass('cbp-spmenu-open');
+    $('.forest').toggleClass('counter-push-margin');
+    $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+  }
+  
   console.log("Planting seed...")
 
   $.ajax({

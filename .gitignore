@@ -17,4 +17,5 @@
 
 
 # Ignore .
+/config/api.yml
 /config/application.yml
