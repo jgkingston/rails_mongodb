@@ -26,6 +26,7 @@ module RailsMongo
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.assets.enabled = true
     config.assets.initialize_on_precompile = false
     config.mongoid.logger = Logger.new($stdout, :warn)
     # config.mongoid.persist_in_safe_mode = true
