@@ -42,7 +42,7 @@ gem 'httparty'
 gem "github_api"
 gem 'oauth2'
 gem 'omniauth'
-gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+gem 'omniauth-github'
 gem 'figaro'
 gem 'rails_12factor', group: :production
 
