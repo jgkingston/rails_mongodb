@@ -5,7 +5,7 @@ production:
       # connection setup. 
       # Use environment variables or a config file to keep your 
       # credentials safe.
-      uri: ENV['MONGOLAB_URI']
+      uri: 'mongodb://heroku_app30461403:ra9piq15gk6sg8583i85298uon@ds043170.mongolab.com:43170/heroku_app30461403'
       options: 
         # The default consistency is :eventual, which reads from 
         # secondaries when possible. 
@@ -31,8 +31,8 @@ production:
         timeout: 15
         # Set this to ensure that your writes are a round-trip operation
         # and are confirmed by the system. Default (false).
-        skip_version_check: true
-        safe: true
+        # skip_version_check: true
+        # safe: true
         # refresh_interval specifies the number of seconds to cache information
         # about a node. Default is 300 seconds (5 minutes).
         refresh_interval: 10
