@@ -3,7 +3,7 @@ require './lib/git_api_requests'
 class GardensController < ApplicationController
 
   before_action :load_user
-  before_action :find_garden, only: [:show, :edit, :update, :destroy, :git_api_commits] 
+  before_action :find_garden, only: [:show, :edit, :update, :destroy, :webhook, :git_api_commits] 
 
   def index
     respond_to do |format|
@@ -72,6 +72,34 @@ class GardensController < ApplicationController
       format.js
       # format.html
     end
+  end
+
+  def create_webhook
+    request = GitHubApiRequest.new
+    request.username = @garden.owner
+    request.repository = @garden.name
+  end
+
+  def webhook
+
+    payload = params["commits"]
+
+    payload.each do |commit|
+      url_list << commit['url']
+    end
+
+    commits = []
+
+    url_list.each do |url|
+      ret = HTTParty.get url, headers: {"User-Agent" => @user.github_username, "Authorization" => "token #{@user.token}"  }
+
+      commits << ret.parsed_response
+    end
+    
+    commits.each do |commit|
+      commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
+    end
+
   end
 
   private

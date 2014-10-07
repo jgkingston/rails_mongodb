@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :gardens do
       member do
         get 'git_api_commits'
+        get 'create_webhook'
+        post 'webhook'
       end
       resources :growth_rings do
         member do
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get "/auth/github/callback", to:'sessions#create'
+  get "/auth/github/callback" => 'sessions#create'
   
 
   # Example of regular route:

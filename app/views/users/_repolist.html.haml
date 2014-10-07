@@ -1,9 +1,9 @@
 
 - if user.user_repos
   - user.user_repos.each do |repo|
-    %li
-      / = link_to "#{repo["owner"]}/#{repo["name"]}, #{repo["language"]}", user_gardens_path(current_user, garden: {owner: repo['owner'], name: repo['name'], language: repo['language'] }), method: :post, class: "#{repo['language']} plant-seed" 
-      = link_to "#{repo["name"]}", "javascript:void(0)", owner: repo['owner'], repo: repo['name'], class: "plant-seed", ajax_path: require_tree_user_path(current_user)
-      - names = user.gardens.map{|garden| garden.name }
-      - if names.include?(repo["name"])
-        | Tracked 
+    - names = user.gardens.map{|garden| garden.name }
+    - if names.include?(repo["name"]) == false
+      %li
+        = link_to "#{repo["name"]}", "javascript:void(0)", owner: repo['owner'], repo: repo['name'], class: "plant-seed", ajax_path: require_tree_user_path(current_user)
+        
+      

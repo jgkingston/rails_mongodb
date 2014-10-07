@@ -10,6 +10,7 @@ class GitHubApiRequest
   attr_accessor :dev_token
   attr_accessor :base_url
   attr_accessor :stats
+  attr_accessor :user_id
 
   def initialize
     self.base_url = "https://api.github.com/repos/"
@@ -87,6 +88,11 @@ class GitHubApiRequest
 
     sha_keys = new_commit_pairs.keys
 
+    if sha_keys.length > 30
+      sha_keys.shuffle!
+      sha_keys = sha_keys[0...30]
+    end
+
     sha_keys.each do |sha|
       url = "https://api.github.com/repos/" + self.username + "/" + self.repository + "/commits/" + sha
 
@@ -105,6 +111,29 @@ class GitHubApiRequest
 
     stats
 
+  end
+
+  def create_webhook
+
+    post_url = "http://require-tree.herokuapp.com/users/" + self.user_id + "/gardens/" + self.repo_id + "/webhook"
+
+
+    options = {
+                  "name" => "require-tree",
+                  "active" => true,
+                  "events" => [
+                    "push"
+                  ],
+                  "config" => {
+                    "url" => post_url,
+                    "content_type" => "json"
+                  }
+                }
+
+    url = "https://api.github.com/repos/" + self.username + "/" + self.repository + "/hooks"
+
+    ret = HTTParty.post url, headers: { "User-Agent" => self.username, "Authorization" => "token #{self.dev_token}" }, config: options
+    
   end
 
 end
