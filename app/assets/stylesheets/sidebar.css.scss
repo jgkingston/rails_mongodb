@@ -18,6 +18,8 @@
     z-index: 1000;
 }
 
+
+
 .cbp-spmenu-left {
     left: -240px;
     margin-top: 64px;
@@ -40,11 +42,47 @@
     padding-left: 240px;
 }
 
+
+@media (max-width: 768px) {
+
+    .cbp-spmenu-vertical {
+        width: 100vw;
+        height: 100%;
+        top: 0;
+        z-index: 999;
+        background-color: white;
+    }
+
+    .cbp-spmenu-left {
+        left: -100vw;
+        margin-top: 64px;
+
+        &.cbp-spmenu-open {
+          left: 0px;
+        }
+
+    }
+ 
+
+}
+
 // Chevron sidebar button
 #showLeft {
   position: absolute;
   top: 50%;
   right: -1em;
+}
+
+@media (max-width: 768px) {
+
+   #showLeft.active{
+      position: absolute;
+      top: 50%;
+      right: 1em;
+      z-index: 1000;
+    }
+ 
+
 }
 
 .cbp-spmenu {
