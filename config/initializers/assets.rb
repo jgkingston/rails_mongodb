@@ -6,3 +6,9 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :github, 
+  Figaro.env.client_id,
+  Figaro.env.client_secret, 
+  scope: "repo"
+end
