@@ -5,7 +5,7 @@ production:
       # connection setup. 
       # Use environment variables or a config file to keep your 
       # credentials safe.
-      uri: 'mongodb://require_tree_admin:reticulatingpinetrees@ds043220.mongolab.com:43220/require_tree_production'
+      uri: 'mongodb://heroku_app30461403:ra9piq15gk6sg8583i85298uon@ds043170.mongolab.com:43170/heroku_app30461403'
       options: 
         # The default consistency is :eventual, which reads from 
         # secondaries when possible. 
