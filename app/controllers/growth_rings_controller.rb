@@ -63,10 +63,6 @@ class GrowthRingsController < ApplicationController
     redirect_to user_garden_path(@user, @garden)
   end
 
-  def method_name
-    
-  end
-
   private
 
   def find_growth_ring

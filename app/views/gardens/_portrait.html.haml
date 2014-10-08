@@ -1,17 +1,24 @@
 
-.col-md-6.col-md-push-2.portrait
+.col-md-6.col-sm-9.col-md-push-2.col-sm-push-3.portrait
+  %div.small-screen-title.text-center
+    %h3
+      = garden.owner
+      = "/"
+      = garden.name
   %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.safe_name, initialise: "true", type: garden.classify_tree, class: garden.safe_name}
 
     %svg{viewBox: "0 0 840 600", class: garden.language}
       %g{ class: "#{garden.safe_name}"}
-  = link_to user_garden_path(@user, @garden), method: :delete do
-    = image_tag 'axe2.png', class: "delete-icon"\
+  = link_to user_garden_path(@user, @garden), method: :delete, data: { confirm: 'Are you sure you want to cut down this tree?' } do
+    = image_tag 'axe2.png', class: "delete-icon"
+  = link_to git_api_commits_user_garden_path(user, garden), data: { confirm: 'Do you want to get additional commit details from github to further enhance you tree? This may take a little while.' }  do
+    = image_tag 'watering_can.png', class: "grow-icon"
 
-.col-md-2.col-md-pull-6.left-nav
+.col-sm-3.col-md-2.col-md-pull-6.col-sm-pull-9.left-nav
   %ul.side-gardens
     - user.gardens.each do |side_garden|
       - if side_garden != garden
-        %li{"data-toggle" => "tooltip", "data-placement" => "bottom", "title" => "", "data-original-title" => side_garden.name}
+        %li
           = link_to "javascript:void(0)", class: "load-portrait", ajax_path: user_garden_path(user, side_garden) do
             %div.chart.attribute-holder{age: side_garden.age, length: side_garden.get_length, gnarling: side_garden.comment_quality, id: side_garden.safe_name, initialise: "true", type: side_garden.classify_tree, class: side_garden.safe_name}
               %svg{viewBox: "0 0 840 600", class: "#{side_garden.language} grey-tree"}
@@ -19,29 +26,29 @@
 
 
 .col-md-4.right-info
-  = link_to "Get Commits", "javascript:void(0)", class: "commits-log", ajax_path: git_api_commits_user_garden_path(user, garden)
-  %br
-  = link_to "Grow Tree", user_garden_growth_rings_path(user, garden), method: :post
+  .large-screen-title
+    %h2
+      = garden.owner
+      = "/"
+      = garden.name
+  
   %div
-    %p Repository has X commits. 
+    %p= "This is #{garden.age_descriptor} with #{garden.sha_key_dates.count} commits."
     %p Trees are drawn recursively with a number of iterations equal to log2(commits). This makes it possible to draw "interesting" trees to represent both small and large repositories. By using a log transformation on the data it is possible to render a range of commit values from 1 to ~ 40,000 using 1 to 15 recursions.
-    %p
-      = garden.sha_key_dates.count
-      Commits
-    %p Repository has X contributors
+
+    %p= "This tree #{garden.last_update}"
+
+    %p= "#{garden.contributors_text} committed to this repository"
     %p The number of contributors to a repository determine the "type" of tree drawn. Repositories with 3 or fewer contributors will, by default, draw a "pine" style tree using a 3 path pattern with a longer central "trunk" and shorter side "branches". Repositories with 4 or more contributors are drawn in an "oak" style suing a 2 path pattern and "branches" of equal length.
-    %p
-      = garden.contributors
-      Contributors
-    %p Repository has an median average of X lines of code per commit
-    %p The median lines of code per submit is using to determine the length of the branches. A median average was used in an attempt to reduce the impact of the inclusion of vendor assets such as bootstrap and angular on the calculation. By adjusting the "branch" length it is possible to visually distinguish reposiotiries with a few large commits from a repository with many smaller commits.
-    %br
-    = "Last updated #{garden.last_updated.strftime("%l:%M %p")} on #{garden.last_updated.strftime("%m/%d/%Y")}"
-    %br
-    = garden.comment_quality
-    %br
-    = "Median lines of code: #{garden.get_length} "
-    %br
-    = garden.age
+
+    %p= "The median commit size for this repository is #{garden.get_length} lines of code"
+    %p The median lines of code per submit is using to determine the length of the branches. A median average was used to minimize the impact of libraries and vendor assets, such as bootstrap and angular, on the calculation. By adjusting the "branch" length it is possible to give distinct looks to trees grown with a few large commits and trees grown with many smaller commits.
+
+    %p= "The commit messages for this repository were #{garden.comment_comparator}. %0 characters has been put foward by some as a good target length."
+    
+    Watering Can designed by 
+    %a{href: "http://www.thenounproject.com/misterphilbo"} Phil Scott 
+    from the 
+    %a{href: "http://www.thenounproject.com"} Noun Project
 
 %script{:src => "/assets/main.js?body=1"}

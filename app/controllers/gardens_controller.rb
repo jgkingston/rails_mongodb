@@ -59,19 +59,30 @@ class GardensController < ApplicationController
 
     sha_key_dates = commits.flat_map{|commit| [commit["sha"], commit["commit"]["committer"]["date"]]}
 
-    github = Github.new oauth_token: @user.token,
-                        auto_pagination: true
+    messages = commits.flat_map{|commit| [ commit['sha'], commit["commit"]["message"] ] }
 
     contributors = github.repos.contributors @garden.owner, @garden.name
 
-    # @garden.update_attributes(sha_keys: sha_keys)
     @garden.update_attributes(sha_key_dates: Hash[*sha_key_dates], contributors: contributors.length )
 
 
-    respond_to do |format|
-      format.js
-      # format.html
+    request = GitHubApiRequest.new
+    request.username = @garden.owner
+    request.repository = @garden.name
+
+    request.get_detailed_commits @garden.sha_key_dates, @garden.last_updated
+
+    commits = request.detailed_commits
+    
+    commits.each do |commit|
+      commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
     end
+
+    if commits.length > 0
+      @garden.update_attributes(last_updated: commits[0]["commit"]["committer"]["date"])
+    end
+
+    redirect_to root_path
   end
 
   def create_webhook

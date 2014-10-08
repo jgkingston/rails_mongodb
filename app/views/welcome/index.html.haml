@@ -5,13 +5,14 @@
 
 
 - else
-  #large.jumbotron
-    %h1 require_Tree
-    %p What if I told you that you were looking at a GitHub repository? Click below to see yours.
-    = link_to new_user_registration_path do
-      %ul.list-inline
-      %div.chart.attribute-holder{age: 8, length: 130, gnarling: 1, id: 'example', initialise: "true", type: "oak", class: 'example'}
-        %svg.example
-          %svg{viewBox: "0 0 840 600"}
-            %g.example
+  
+  %h1 require_Tree
+  %p What if I told you that you were looking at a GitHub repository? Click below to see yours.
+  = link_to new_user_registration_path do
+    .row
+      .col-sm-4.col-sm-offset-4.welcome-tree
+        %div.chart.attribute-holder{age: 8, length: 130, gnarling: 1, id: 'example', initialise: "true", type: "oak", class: 'example'}
+          %svg.example
+            %svg{viewBox: "0 0 840 600"}
+              %g.example
 

@@ -13,11 +13,7 @@ Rails.application.routes.draw do
         get 'create_webhook'
         post 'webhook'
       end
-      resources :growth_rings do
-        member do
-          get 'git_api_commit'
-        end
-      end
+      resources :growth_rings 
     end
   end
 

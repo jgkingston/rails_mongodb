@@ -12,7 +12,7 @@
 }
 
 .cbp-spmenu-vertical {
-    width: 240px;
+    width: 360px;
     height: 100%;
     top: 0;
     z-index: 1000;
@@ -21,8 +21,10 @@
 
 
 .cbp-spmenu-left {
-    left: -240px;
+    left: -360px;
     margin-top: 64px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     &.cbp-spmenu-open {
       left: 0px;
@@ -31,15 +33,15 @@
 }
 
 .cbp-spmenu-push-toright {
-    left: 240px;
+    left: 360px;
 }
 
 .cbp-spmenu-pull-nav-toleft {
-    left: -240px;
+    left: -360px;
 }
  
 .forest.counter-push-margin {
-    padding-left: 240px;
+    padding-left: 360px;
 }
 
 
