@@ -21,3 +21,16 @@
 .welcome-tree {
   height: 50%;
 }
+
+.help-text {
+  margin-top: 15%;
+  -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#showLeft.help {
+  position: relative;
+  top: inherit;
+  right: auto;
+}

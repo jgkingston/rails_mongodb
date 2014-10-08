@@ -24,7 +24,7 @@
     = "-OR-"
   %br
 
-  = text_field_tag "owner", "", class: "gather-input form-control", placeholder: 'github profile username'
+  = text_field_tag "owner", "", class: "gather-input form-control", placeholder: 'enter a github username'
   = link_to "Gather Seedlings", "javascript:void(0)", class: "btn gather-seeds", ajax_path: git_api_repos_user_path(user)
   .repolist-panel
     %ul.repolist

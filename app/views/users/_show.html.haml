@@ -3,5 +3,9 @@
 .row.forest
   = render 'gardens/grid', user: user
 
-
+  - if user.gardens.length == 0
+    .col-md-4.col-md-offset-4.help-text.text-center
+      %h4 It doesn't look like you have any trees planted yet.
+      %p Click the arrow to the left to starting gathering your seed files.
+      
 

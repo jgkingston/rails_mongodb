@@ -96,7 +96,7 @@ $(document).ready(function() {
       x: end.x, 
       y: end.y, 
       a: b.a + angleDelta + randomAngleDelta, 
-      l: b.l * (1 - (0.2 / b.g)) * sideBranchDelta, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
+      l: b.l * lengthDelta * b.g * sideBranchDelta, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
       d: b.d + 1,
       g: b.g,
       t: b.t,
