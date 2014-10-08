@@ -2,6 +2,7 @@
 %html{:lang => "en"}
   %head
     %title require_Tree
+    = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -21,7 +22,7 @@
               %a.grid-view{href: "#", ajax_path: user_gardens_path(current_user)} Grid
             / %li
             /   %a{href: "#"} Portrait
-          %form.navbar-form.navbar-left
+          %form.navbar-form.navbar-left.search-bar
             %input#search-term.form-control.col-lg-8{:placeholder => "Search", :type => "text"}/
         %ul.nav.navbar-nav.navbar-right
           %li

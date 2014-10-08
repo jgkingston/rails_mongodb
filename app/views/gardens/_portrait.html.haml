@@ -9,9 +9,9 @@
 
     %svg{viewBox: "0 0 840 600", class: garden.language}
       %g{ class: "#{garden.safe_name}"}
-  = link_to user_garden_path(@user, @garden), method: :delete, data: { confirm: 'Are you sure you want to cut down this tree?' } do
+  = link_to user_garden_path(@user, @garden), method: :delete, data: { header: 'Are you sure you want to cut down this tree?', confirm:  "... You can always plant it again later if you change your mind." } do
     = image_tag 'axe2.png', class: "delete-icon"
-  = link_to git_api_commits_user_garden_path(user, garden), data: { confirm: 'Do you want to get additional commit details from github to further enhance you tree? This may take a little while.' }  do
+  = link_to git_api_commits_user_garden_path(user, garden), class: 'reset-link', data: { header: 'Do you want to get additional commit details from github to further enhance you tree?', confirm: ' This may take a little while.' }  do
     = image_tag 'watering_can.png', class: "grow-icon"
 
 .col-sm-3.col-md-2.col-md-pull-6.col-sm-pull-9.left-nav

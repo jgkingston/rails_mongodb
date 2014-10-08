@@ -1,11 +1,16 @@
 // Load grid view
 $(document).on('click', '.grid-view', function() {
+
+  
+
   console.log("ready")
   $.ajax({
     url: $(this).attr('ajax_path') ,
     type: 'GET',
     dataType: 'script'
   })
+
+  $('.search-bar').css("display", "block")
 });
 
 // Grid Filter
@@ -36,6 +41,8 @@ $(document).on('click', '.load-portrait', function() {
     type: 'GET',
     dataType: 'script'
   })
+
+  $('.search-bar').css("display", "none")
 });
 
 // Scroll to info panel on small screen in portrait view on click

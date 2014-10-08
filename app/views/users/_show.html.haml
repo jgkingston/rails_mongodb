@@ -1,6 +1,9 @@
 / = link_to "Sign in with GitHub", "/auth/github"
 
 .row.forest
+  
+  
+
   = render 'gardens/grid', user: user
 
   - if user.gardens.length == 0
@@ -8,4 +11,3 @@
       %h4 It doesn't look like you have any trees planted yet.
       %p Click the arrow to the left to starting gathering your seed files.
       
-
