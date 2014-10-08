@@ -20,6 +20,9 @@
           %ul.nav.navbar-nav
             %li
               %a.grid-view{href: "#", ajax_path: user_gardens_path(current_user)} Grid
+            %li
+              = link_to "Create Webhook", "javascript:void(0)", id: 'webhook-link'
+              / = image_tag 'sun.svg', class: 'webhook-icon'
             / %li
             /   %a{href: "#"} Portrait
           %form.navbar-form.navbar-left.search-bar

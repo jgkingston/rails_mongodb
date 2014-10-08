@@ -5,7 +5,8 @@
       = garden.owner
       = "/"
       = garden.name
-  %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.safe_name, initialise: "true", type: garden.classify_tree, class: garden.safe_name}
+  %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.safe_name, initialise: "true", type: garden.classify_tree,ajax_path: create_webhook_user_garden_path(user, garden), class: garden.safe_name}
+
 
     %svg{viewBox: "0 0 840 600", class: garden.language}
       %g{ class: "#{garden.safe_name}"}
@@ -33,20 +34,40 @@
       = garden.name
   
   %div
-    %p= "This is #{garden.age_descriptor} with #{garden.sha_key_dates.count} commits."
+    %p
+      = "This is" 
+      %span.emphasize-text= "#{garden.age_descriptor}"
+      = "with" 
+      %span.emphasize-text= "#{garden.sha_key_dates.count}"
+      = "commits."
     %p Trees are drawn recursively with a number of iterations equal to log2(commits). This makes it possible to draw "interesting" trees to represent both small and large repositories. By using a log transformation on the data it is possible to render a range of commit values from 1 to ~ 40,000 using 1 to 15 recursions.
 
-    %p= "This repository was primarily written in #{garden.language}."
+    %p
+      = "This repository was primarily written in" 
+      %span.emphasize-text= "#{garden.language}"
+      ="."
 
-    %p= "This tree #{garden.last_update}"
+    %p
+      = "This tree" 
+      %span.emphasize-text= "#{garden.last_update}"
+      ="."
 
-    %p= "#{garden.contributors_text} committed to this repository"
+    %p
+      %span.emphasize-text= "#{garden.contributors_text}"
+      = "committed to this repository"
     %p The number of contributors to a repository determine the "type" of tree drawn. Repositories with 3 or fewer contributors will, by default, draw a "pine" style tree using a 3 path pattern with a longer central "trunk" and shorter side "branches". Repositories with 4 or more contributors are drawn in an "oak" style suing a 2 path pattern and "branches" of equal length.
 
-    %p= "The median commit size for this repository is #{garden.get_length} lines of code"
+    %p
+      = "The median commit size for this repository is" 
+      %span.emphasize-text= "#{garden.get_length}"
+      = "lines of code"
     %p The median lines of code per submit is using to determine the length of the branches. A median average was used to minimize the impact of libraries and vendor assets, such as bootstrap and angular, on the calculation. By adjusting the "branch" length it is possible to give distinct looks to trees grown with a few large commits and trees grown with many smaller commits.
 
-    %p= "The commit messages for this repository were #{garden.comment_comparator}. 50 characters has been put foward by some deveopers as a good target length for commit messages."
+    %p
+      = "The commit messages for this repository were"
+      %span.emphasize-text= "#{garden.comment_comparator}"
+      ="." 
+    %p Fifty characters has been put foward by some deveopers as a good target length for commit messages.
     
     Watering Can designed by 
     %a{href: "http://www.thenounproject.com/misterphilbo"} Phil Scott 

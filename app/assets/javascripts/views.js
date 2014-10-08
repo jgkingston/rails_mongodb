@@ -11,6 +11,7 @@ $(document).on('click', '.grid-view', function() {
   })
 
   $('.search-bar').css("display", "block")
+  $('#webhook-link').css("display", "none")
 });
 
 // Grid Filter
@@ -43,6 +44,7 @@ $(document).on('click', '.load-portrait', function() {
   })
 
   $('.search-bar').css("display", "none")
+  $('#webhook-link').css("display", "block")
 });
 
 // Scroll to info panel on small screen in portrait view on click

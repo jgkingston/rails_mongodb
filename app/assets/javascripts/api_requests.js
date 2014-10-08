@@ -66,6 +66,19 @@ $(document).on('click', '.plant-seed', function() {
   
 });
 
+$(document).on('click', '#webhook-link', function() {
+  
+  var ajax_path = $('.attribute-holder').attr('ajax_path');
+
+  console.log(ajax_path)
+
+  $.ajax({
+    url: ajax_path,
+    type: 'GET',
+    dataType: 'script'
+    })
+});
+
 
 
 

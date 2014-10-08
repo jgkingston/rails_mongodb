@@ -3,7 +3,7 @@ require './lib/git_api_requests'
 class GardensController < ApplicationController
 
   before_action :load_user
-  before_action :find_garden, only: [:show, :edit, :update, :destroy, :webhook, :git_api_commits] 
+  before_action :find_garden, only: [:show, :edit, :update, :destroy, :create_webhook, :webhook, :git_api_commits] 
 
   def index
     respond_to do |format|
@@ -86,12 +86,24 @@ class GardensController < ApplicationController
   end
 
   def create_webhook
-    request = GitHubApiRequest.new
-    request.username = @garden.owner
-    request.repository = @garden.name
+    _request = GitHubApiRequest.new
+    _request.user_id = @user.id
+    _request.repo_id = @garden.id
+    _request.username = @user.github_username
+    _request.repository = @garden.name
+
+    puts "before create function"
+
+    _request.create_webhook_dooooo
+
+    puts "after create function"
+
+    redirect_to root_path
   end
 
   def webhook
+
+    params[""]
 
     payload = params["commits"]
 

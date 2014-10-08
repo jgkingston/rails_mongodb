@@ -95,7 +95,7 @@ class Garden
     if self.comment_quality < 0.9
       ", on average, shorter than 50 characters"
     elsif self.comment_quality >= 0.9 && self.comment_quality <= 1.1
-      "close to fifty characters"
+      "close to 50 characters"
     else
       ", on average, longer than 50 characters"
     end
@@ -103,9 +103,9 @@ class Garden
 
   def last_update
     if self.last_updated == "2008-04-01T00:00:00Z"
-      "has not been watered."
+      "has not been watered"
     else
-      "was last watered on #{self.last_updated.strftime("%m/%d/%Y")} at #{self.last_updated.strftime("%l:%M %p")}."
+      "was last watered on #{self.last_updated.strftime("%m/%d/%Y")} at #{self.last_updated.strftime("%l:%M %p")}"
     end
   end
 
