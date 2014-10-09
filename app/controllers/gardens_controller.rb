@@ -118,8 +118,10 @@ class GardensController < ApplicationController
       p url_list
 
       payload.each do |commit|
-        url_list << commit['url']
         
+        url = "https://api.github.com/repos/" + @garden.owner + "/" + @garden.name + "/commits/" + commit["id"]
+        
+        url_list << url 
       end
       p url_list
 
