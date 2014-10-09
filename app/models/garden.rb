@@ -13,6 +13,7 @@ class Garden
   field :sha_key_dates, type: Hash, default: {}
   field :messages, type: Hash, default: {}
   field :last_updated, type: DateTime, default: "2008-04-01T00:00:00Z"
+  field :hooked, type: Boolean, default: false
 
   def safe_name
 

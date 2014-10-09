@@ -14,7 +14,7 @@
         # We don't want to pop up another confirmation (recursion)
         .removeAttr('data-confirm')
         # We want a button
-        .addClass('btn').addClass('btn-info')
+        .addClass('btn').addClass('btn-info').attr("data-dismiss", "modal").attr("aria-hidden", "true").addClass('load-spinner')
         # We want it to sound confirmy
         .html("Let's do this.")
 

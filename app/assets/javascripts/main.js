@@ -115,6 +115,7 @@ $(document).ready(function() {
     var type = $("div." + d).attr("type");
     var initialise = $("div." + d).attr("initialise");
 
+
     branches = [];
     var seed = {i: 0, x: 420, y: 600, a: 0, l: length, d: (10 - depth), g: gnarl, t: type}; // a = angle, l = length, d = depths, g = gnarl
     branch(seed);

@@ -5,14 +5,14 @@
       = garden.owner
       = "/"
       = garden.name
-  %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.safe_name, initialise: "true", type: garden.classify_tree,ajax_path: create_webhook_user_garden_path(user, garden), class: garden.safe_name}
+  %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.safe_name, initialise: "true", type: garden.classify_tree, ajax_path: create_webhook_user_garden_path(user, garden), hooked: garden.hooked, class: garden.safe_name}
 
 
     %svg{viewBox: "0 0 840 600", class: garden.language}
       %g{ class: "#{garden.safe_name}"}
   = link_to user_garden_path(@user, @garden), method: :delete, data: { header: 'Are you sure you want to cut down this tree?', confirm:  "... You can always plant it again later if you change your mind." } do
     = image_tag 'axe2.png', class: "delete-icon"
-  = link_to git_api_commits_user_garden_path(user, garden), class: 'reset-link', data: { header: 'Do you want to get additional commit details from github to further enhance you tree?', confirm: ' This may take a little while.' }  do
+  = link_to git_api_commits_user_garden_path(user, garden), class: 'reset-link', data: { header: 'Do you want to get additional commit details from github to further enhance you tree?', confirm: ' This may take a little while.' }, remote: true  do
     = image_tag 'watering_can.png', class: "grow-icon"
 
 .col-sm-3.col-md-2.col-md-pull-6.col-sm-pull-9.left-nav

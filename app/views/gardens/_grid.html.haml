@@ -2,7 +2,7 @@
 - user.gardens.each do |garden|
   .col-lg-3.col-md-4.col-sm-6.item-container.grid-cell
 
-    = link_to "javascript:void(0)", class: "load-portrait item", ajax_path: user_garden_path(user, garden) do
+    = link_to "javascript:void(0)", hooked: garden.hooked ,class: "load-portrait item", ajax_path: user_garden_path(user, garden) do
       %div.chart.attribute-holder{age: garden.age, length: garden.get_length, gnarling: garden.comment_quality, id: garden.safe_name, initialise: "true", type: garden.classify_tree, class: garden.safe_name}
         %svg{class: "#{garden.language}"}
           %svg{viewBox: "0 0 840 600", class: garden.language}

@@ -44,7 +44,11 @@ $(document).on('click', '.load-portrait', function() {
   })
 
   $('.search-bar').css("display", "none")
-  $('#webhook-link').css("display", "block")
+  console.log($(this).attr('hooked'))
+  if ( $(this).attr('hooked') ==  "false" ) {
+    $('#webhook-link').css("display", "block")
+  }
+  
 });
 
 // Scroll to info panel on small screen in portrait view on click
@@ -58,6 +62,17 @@ $(document).on('click', '.portrait', function() {
     scrollTop: $('.right-info').offset().top
 
   }, 300);
+
+});
+
+// Load spinner during update tree controller action
+$(document).on('click', '.load-spinner', function() {
+  
+  $('.portrait').html("")
+
+  $(".portrait").append( "<div id='spinner' ><img src='/assets/ajax-loader.gif', alt: 'Loading...' />"
+    );
+  $('#spinner').css("display", "block")
 
 });
 

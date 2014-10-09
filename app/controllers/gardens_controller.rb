@@ -83,7 +83,9 @@ class GardensController < ApplicationController
       @garden.update_attributes(last_updated: commits[0]["commit"]["committer"]["date"])
     end
 
-    redirect_to root_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create_webhook
@@ -106,6 +108,7 @@ class GardensController < ApplicationController
 
     if params["zen"]
 
+      @garden.hooked = true
       flash[:success] = "User successfully added."
 
     else
