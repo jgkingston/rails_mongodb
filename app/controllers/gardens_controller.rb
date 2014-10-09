@@ -102,7 +102,8 @@ class GardensController < ApplicationController
   end
 
   def webhook
-
+    skip_before_action :authenticate_user!
+    
     payload = params["commits"]
 
     payload.each do |commit|
