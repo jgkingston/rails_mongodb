@@ -108,7 +108,7 @@ class GardensController < ApplicationController
 
     if params["zen"]
 
-      @garden.hooked = true
+      @garden.update_attributes(hooked: true)
       flash[:success] = "User successfully added."
 
     else
