@@ -135,10 +135,13 @@ class GardensController < ApplicationController
       end
       p commits
       
+      puts @garden.growth_rings.length
       commits.each do |commit|
         puts commit["sha"]
+        puts commit["stats"]["total"]
         commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
       end
+      puts @garden.growth_rings.length
 
     end
 
