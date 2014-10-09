@@ -131,7 +131,7 @@ class GardensController < ApplicationController
 
         commits << ret.parsed_response
       end
-      puts commits.length
+      p commits
       
       commits.each do |commit|
         puts commit["sha"]
