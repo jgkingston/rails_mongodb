@@ -112,17 +112,19 @@ class GardensController < ApplicationController
 
       payload = params["commits"]
 
+      p payload
+
       url_list = []
-      puts url_list
+      p url_list
 
       payload.each do |commit|
         url_list << commit['url']
         
       end
-      puts url_list
+      p url_list
 
       commits = []
-      puts commits
+      p commits
 
       url_list.each do |url|
         ret = HTTParty.get url, headers: {"User-Agent" => @user.github_username, "Authorization" => "token #{@user.token}"  }
@@ -132,6 +134,7 @@ class GardensController < ApplicationController
       puts commits.length
       
       commits.each do |commit|
+        puts commit["sha"]
         commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
       end
 
