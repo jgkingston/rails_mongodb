@@ -30,11 +30,10 @@ module RailsMongo
     config.assets.initialize_on_precompile = false
     config.mongoid.logger = Logger.new($stdout, :warn)
     # config.mongoid.persist_in_safe_mode = true
-    config.middleware.use Rack::Cors do
+    config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
       allow do
         origins '*'
-        # location of your API
-        resource '*', :headers => :any, :methods => [:get, :post, :options, :put, :delete]
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
   end
