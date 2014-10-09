@@ -90,7 +90,7 @@ class GardensController < ApplicationController
     _request = GitHubApiRequest.new
     _request.user_id = @user.id
     _request.repo_id = @garden.id
-    _request.username = @user.github_username
+    _request.username = @garden.owner
     _request.repository = @garden.name
 
     puts "before create function"
@@ -104,24 +104,30 @@ class GardensController < ApplicationController
 
   def webhook
 
+    if params["zen"]
 
+      flash[:success] = "User successfully added."
 
-    payload = params["commits"]
+    else
 
-    payload.each do |commit|
-      url_list << commit['url']
-    end
+      payload = params["commits"]
 
-    commits = []
+      payload.each do |commit|
+        url_list << commit['url']
+      end
 
-    url_list.each do |url|
-      ret = HTTParty.get url, headers: {"User-Agent" => @user.github_username, "Authorization" => "token #{@user.token}"  }
+      commits = []
 
-      commits << ret.parsed_response
-    end
-    
-    commits.each do |commit|
-      commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
+      url_list.each do |url|
+        ret = HTTParty.get url, headers: {"User-Agent" => @user.github_username, "Authorization" => "token #{@user.token}"  }
+
+        commits << ret.parsed_response
+      end
+      
+      commits.each do |commit|
+        commit = @garden.growth_rings.create(sha: commit["sha"], total: commit["stats"]["total"], additions: commit["stats"]["additions"], deletions: commit["stats"]["deletions"], message: commit["commit"]["message"])
+      end
+
     end
 
   end
