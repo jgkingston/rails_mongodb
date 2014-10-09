@@ -45,9 +45,10 @@ $(document).on('click', '.load-portrait', function() {
 
   $('.search-bar').css("display", "none")
   console.log($(this).attr('hooked'))
-  if ( $(this).attr('hooked') ==  "false" ) {
-    $('#webhook-link').css("display", "block")
-  }
+  
+  // if ( $(this).attr('hooked') ==  "false" ) {
+  //   $('#webhook-link').css("display", "block")
+  // }
   
 });
 
