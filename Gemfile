@@ -45,6 +45,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
 gem 'rails_12factor', group: :production
+gem 'rack-cors', :require => 'rack/cors', group: :production
 
 ruby "2.1.2"
 

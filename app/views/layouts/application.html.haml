@@ -7,7 +7,7 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
     %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}
-  %body.cbp-spmenu-push
+  %body
     .navbar.navbar-default
       .navbar-header
         %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -26,7 +26,7 @@
             / %li
             /   %a{href: "#"} Portrait
           %form.navbar-form.navbar-left.search-bar
-            %input#search-term.form-control.col-lg-8{:placeholder => "Search", :type => "text"}/
+            %input#search-term.form-control.col-lg-8{:placeholder => "Search", :type => "text"}
         %ul.nav.navbar-nav.navbar-right
           %li
             = render 'devise/menu/registration_items'
@@ -36,6 +36,6 @@
           
     .container-fluid
       = yield
-    
+      
 
 

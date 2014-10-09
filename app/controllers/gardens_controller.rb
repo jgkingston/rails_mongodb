@@ -103,8 +103,6 @@ class GardensController < ApplicationController
 
   def webhook
 
-    params[""]
-
     payload = params["commits"]
 
     payload.each do |commit|

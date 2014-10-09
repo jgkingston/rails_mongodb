@@ -30,5 +30,12 @@ module RailsMongo
     config.assets.initialize_on_precompile = false
     config.mongoid.logger = Logger.new($stdout, :warn)
     # config.mongoid.persist_in_safe_mode = true
+    config.middleware.use Rack::Cors do
+      allow do
+        origins 'https://api.github.com'
+        # location of your API
+        resource '*', :headers => :any, :methods => [:get, :post, :options, :put, :delete]
+      end
+    end
   end
 end

@@ -55,7 +55,7 @@ $(document).ready(function() {
     var sideBranchDelta = 1;
 
     if (b.t == "pine") {
-      sideBranchDelta = 0.5
+      sideBranchDelta = 0.6
     };
 
     newB = {
@@ -71,7 +71,7 @@ $(document).ready(function() {
     };
     branch(newB);
 
-    if (b.t == "pine") {
+    if (b.t == "pine" || ( b.t == "oak" && b.g > 1.0 && b.i < 2 ) ) {
       // Center
       randomAngleDelta = angleRandomness * Math.random() - angleRandomness * 0.5; // Math.random() returns a value from 0 to 1.
       // Perhaps we can substitute values from the commit to make trees distinct
@@ -96,7 +96,7 @@ $(document).ready(function() {
       x: end.x, 
       y: end.y, 
       a: b.a + angleDelta + randomAngleDelta, 
-      l: b.l * lengthDelta * b.g * sideBranchDelta, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
+      l: b.l * lengthDelta * sideBranchDelta, // Include Math.random() here for scary tree. Include randomAngleDelta to warp sizes.
       d: b.d + 1,
       g: b.g,
       t: b.t,
