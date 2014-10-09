@@ -20,7 +20,7 @@
     - user.gardens.each do |side_garden|
       - if side_garden != garden
         %li
-          = link_to "javascript:void(0)", hooked: garden.hooked, class: "load-portrait", ajax_path: user_garden_path(user, side_garden) do
+          = link_to "javascript:void(0)", hooked: side_garden.hooked, class: "load-portrait", ajax_path: user_garden_path(user, side_garden) do
             %div.chart.attribute-holder{age: side_garden.age, length: side_garden.get_length, gnarling: side_garden.comment_quality, id: side_garden.safe_name, initialise: "true", type: side_garden.classify_tree, class: side_garden.safe_name}
               %svg{viewBox: "0 0 840 600", class: "#{side_garden.language} grey-tree"}
                 %g{ class: "#{side_garden.safe_name}"}
