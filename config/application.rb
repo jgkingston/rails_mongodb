@@ -32,7 +32,7 @@ module RailsMongo
     # config.mongoid.persist_in_safe_mode = true
     config.middleware.use Rack::Cors do
       allow do
-        origins 'https://api.github.com'
+        origins '*'
         # location of your API
         resource '*', :headers => :any, :methods => [:get, :post, :options, :put, :delete]
       end
