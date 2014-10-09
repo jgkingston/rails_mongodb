@@ -2,6 +2,7 @@ require './lib/git_api_requests'
 
 class GardensController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:webhook]
   before_action :load_user
   before_action :find_garden, only: [:show, :edit, :update, :destroy, :create_webhook, :webhook, :git_api_commits] 
 
@@ -103,7 +104,7 @@ class GardensController < ApplicationController
 
   def webhook
     skip_before_action :authenticate_user!
-    
+
     payload = params["commits"]
 
     payload.each do |commit|
