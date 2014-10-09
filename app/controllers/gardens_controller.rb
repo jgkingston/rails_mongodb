@@ -112,6 +112,8 @@ class GardensController < ApplicationController
 
       payload = params["commits"]
 
+      url_list = []
+
       payload.each do |commit|
         url_list << commit['url']
       end
