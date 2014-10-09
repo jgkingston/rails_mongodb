@@ -49,6 +49,9 @@ $(document).on('click', '.load-portrait', function() {
   if ( $(this).attr('hooked') ==  "false" ) {
     $('#webhook-link').css("display", "block")
   }
+  else {
+    $('#webhook-link').css("display", "none")
+  }
   
 });
 
